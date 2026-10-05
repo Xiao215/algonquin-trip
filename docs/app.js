@@ -34,6 +34,7 @@ var ICON={
   phone:'<svg viewBox="0 0 20 20"><path d="M5 3h3l1.5 4-2 1.2a9 9 0 0 0 4.3 4.3L13 10.5l4 1.5v3a2 2 0 0 1-2 2A12 12 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>',
   check:'<svg viewBox="0 0 20 20"><path d="M4 10.5l4 4 8-9"/></svg>',
   car:'<svg viewBox="0 0 20 20"><path d="M4 13V9.5L5.6 5h8.8L16 9.5V13M4 13h12M4 13v2M16 13v2"/></svg>',
+  cam:'<svg viewBox="0 0 20 20"><rect x="2.5" y="5.5" width="11" height="9" rx="2"/><path d="M13.5 9l4-2.5v7l-4-2.5"/></svg>',
   chev:'<svg class="chev" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5"/></svg>'
 };
 var WX={sun:'<svg viewBox="0 0 48 48"><g class="sun"><circle cx="24" cy="24" r="8"/><path d="M24 6v5M24 37v5M6 24h5M37 24h5M11 11l3.5 3.5M33.5 33.5 37 37M11 37l3.5-3.5M33.5 14.5 37 11"/></g></svg>',
@@ -185,14 +186,20 @@ function openBooking(id){setView("prep");T.bookings.forEach(function(b){var el=$
   var el=$("bk-"+id);if(el)el.scrollIntoView({block:"start",behavior:"smooth"});}
 
 /* ---------- views & timeline ---------- */
+var ORDER=["sat","sun","prep"],RM=matchMedia("(prefers-reduced-motion: reduce)");
+// Replays the entrance animation on a view; dir -1/1 slides it in from the left/right.
+function enter(el,dir){el.style.setProperty("--dx",dir*18+"px");el.classList.remove("enter");void el.offsetWidth;el.classList.add("enter");}
 function setView(v){
+  var seg=document.querySelector(".seg"),from=ORDER.indexOf(state.view),to=ORDER.indexOf(v),first=!seg.classList.contains("ready");
   state.view=v;store("alg-view",v);state.sel=null;
+  if(v!=="prep")seg.style.setProperty("--i",to);seg.classList.toggle("off",v==="prep");if(first)requestAnimationFrame(function(){seg.classList.add("ready");});
+  enter(v==="prep"?$("prepView"):$("dayView"),first||from===to?0:to>from?1:-1);
   document.querySelectorAll(".seg-btn").forEach(function(b){b.setAttribute("aria-selected",b.dataset.view===v?"true":"false");});
   $("prepView").hidden=v!=="prep";$("dayView").hidden=v==="prep";
   if(v!=="prep"){
     var D=day();$("dayTitle").textContent=D.title;
     $("dayRoute").href=gRoute(T.dayRoutes[v]);
-    renderGlance();renderRows();
+    renderGlance();renderCam();renderRows();
     var cur=liveDay()===v?nowSeg():null;
     if(cur){select(cur.i,false);return;}
   }else $("dayRoute").href=gRoute(T.dayRoutes.sat.concat(T.dayRoutes.sun.slice(1)));
@@ -207,7 +214,7 @@ function nowSeg(){var t=torontoNow().mins,segs=day().segs,best=null;
 function renderRows(){
   var D=day(),ol=$("rows"),cur=liveDay()===state.view?nowSeg():null;ol.innerHTML="";
   D.segs.forEach(function(s){
-    var li=document.createElement("li");li.dataset.i=s.i;if(cur&&cur.i===s.i)li.classList.add("now");
+    var li=document.createElement("li");li.dataset.i=s.i;li.style.setProperty("--r",Math.min(s.i,14));if(cur&&cur.i===s.i)li.classList.add("now");
     var b=document.createElement("button");b.className="row"+(s.t==="drive"?" drive":"");b.setAttribute("aria-expanded","false");
     if(s.t==="drive"){b.innerHTML='<span class="t"></span><span class="num">'+ICON.car+'</span><span class="n"></span>'+ICON.chev;b.querySelector(".n").textContent=dur(s.start,s.end)+" · "+s.label;}
     else{b.style.setProperty("--k",KCOL[s.kind]);
@@ -225,8 +232,16 @@ function select(i,scroll){state.sel=i;paintOpen();var s=day().segs[i];
 function paintOpen(){
   document.querySelectorAll("#rows>li").forEach(function(li){var i=+li.dataset.i,on=i===state.sel;
     li.classList.toggle("open",on);li.querySelector(".row").setAttribute("aria-expanded",on);
-    var d=li.querySelector(".detail");if(on&&!d){li.appendChild(detail(day().segs[i]));}else if(!on&&d)d.remove();});
+    var d=li.querySelector(".detail-wrap:not(.closing)");if(on&&!d)unfold(li.appendChild(detail(day().segs[i])),true);else if(!on&&d)unfold(d,false);});
   document.dispatchEvent(new CustomEvent("trip:view"));
+}
+// Grows a stop's details open from 0 height, or shrinks them away and removes them.
+function unfold(el,open){
+  if(!open)el.classList.add("closing");
+  if(RM.matches||!el.animate){if(!open)el.remove();return;}
+  var h=el.getBoundingClientRect().height;el.style.overflow="hidden";
+  var a=el.animate([{height:"0px",opacity:0},{height:h+"px",opacity:1}],{duration:open?300:200,easing:"cubic-bezier(.2,.8,.2,1)",direction:open?"normal":"reverse"});
+  a.onfinish=function(){if(open)el.style.overflow="";else el.remove();};
 }
 function detail(s){
   var d=document.createElement("div");d.className="detail";var kind=s.t==="drive"?"drive":s.kind;
@@ -236,14 +251,16 @@ function detail(s){
   if(s.tips&&s.tips.length)h+='<ul class="tips">'+s.tips.map(function(t){return "<li>"+esc(t)+"</li>";}).join("")+"</ul>";
   var acts=[];
   if(s.t==="stop"&&s.place!=="markham")acts.push('<a class="pill" target="_blank" rel="noopener" href="'+esc(gPlace(s.place))+'">'+ICON.maps+"Open in Google Maps</a>");
+  (s.links||[]).forEach(function(l){acts.push('<a class="pill" target="_blank" rel="noopener" href="'+esc(l[1])+'">'+(/webcam/i.test(l[0])?ICON.cam:ICON.dir)+esc(l[0])+"</a>");});
   if(s.t==="drive"){var ends=[s.path[0],s.path[s.path.length-1]].filter(function(x){return typeof x==="string";});if(ends.length===2)acts.push('<a class="pill" target="_blank" rel="noopener" href="'+esc(gRoute(ends))+'">'+ICON.dir+"Directions</a>");}
   acts.push('<button class="pill ask" type="button">'+ICON.ask+"Ask about this</button>");
   h+='<div class="actions">'+acts.join("")+"</div>";
   d.innerHTML=h;
+  var wrap=document.createElement("div");wrap.className="detail-wrap";wrap.appendChild(d);
   d.querySelector(".ask").addEventListener("click",function(){
     var q=s.t==="drive"?"Anything we should know about the drive "+s.label.replace("→","to")+"?":"Tell me more about "+s.name+". Anything we should know?";
     if(window.tripChat)window.tripChat.ask(q);});
-  return d;
+  return wrap;
 }
 
 /* ---------- day at a glance ---------- */
@@ -278,11 +295,25 @@ function renderGlance(){
   $("glance").innerHTML=h;
 }
 
+// Live webcam for the day, if the park has one. The stream only loads on tap, to save data on phones.
+function renderCam(){
+  var c=(T.webcams||{})[state.view],el=$("cam");el.hidden=!c;if(!c){el.innerHTML="";return;}
+  el.innerHTML='<div class="cam-head"><h3>'+ICON.cam+'Live from '+esc(c.name)+'</h3><span class="live">LIVE</span>'+
+    '<a class="cam-out" href="'+esc(c.page)+'" target="_blank" rel="noopener">Park webcam page'+ICON.dir+'</a></div>'+
+    '<div class="cam-frame"><button class="cam-play" type="button" aria-label="Play the live webcam"><span class="cam-btn"><svg viewBox="0 0 20 20"><path d="M7 5l8 5-8 5z"/></svg></span>Watch live'+(c.km?' · km '+esc(c.km)+' on Hwy 60':'')+'</button></div>'+
+    '<p class="cam-note">'+esc(c.note)+'</p>';
+  el.querySelector(".cam-play").addEventListener("click",function(){
+    var f=document.createElement("iframe");f.src=c.embed;f.title="Live webcam: "+c.name;
+    f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";
+    this.parentNode.classList.add("on");this.replaceWith(f);});
+}
+
 /* ---------- map ---------- */
 var G=null,map=null,Marker=null,lines=[],markers=[],you=null,embed=null;
 
-function caption(){var s=state.view!=="prep"&&state.sel!=null?day().segs[state.sel]:null;
-  $("mapCaption").textContent=s?(s.t==="drive"?s.label:s.num+". "+s.name):(state.view==="prep"?"The whole weekend":day().title.split(",")[0]+": whole day");}
+function caption(){var s=state.view!=="prep"&&state.sel!=null?day().segs[state.sel]:null,el=$("mapCaption"),was=el.textContent;
+  el.textContent=s?(s.t==="drive"?s.label:s.num+". "+s.name):(state.view==="prep"?"The whole weekend":day().title.split(",")[0]+": whole day");
+  if(el.textContent!==was){el.classList.remove("swap");void el.offsetWidth;el.classList.add("swap");}}
 
 // A bad or missing key drops back to Google's keyless embed (one place or one route at a time).
 window.gm_authFailure=function(){console.warn("Google Maps rejected googleMapsKey in config.js; using the basic embed instead.");useEmbed();};

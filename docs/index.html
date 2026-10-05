@@ -24,15 +24,21 @@
     </header>
 
     <div class="sticky">
-      <div class="seg" role="tablist" aria-label="View">
-        <button role="tab" class="seg-btn" data-view="sat" aria-selected="true">Saturday <small>Oct 10</small></button>
-        <button role="tab" class="seg-btn" data-view="sun" aria-selected="false">Sunday <small>Oct 11</small></button>
-        <button role="tab" class="seg-btn" data-view="prep" aria-selected="false">Prep <small id="prepCount"></small></button>
+      <div class="tabs" role="tablist" aria-label="View">
+        <div class="seg" role="presentation">
+          <button role="tab" class="seg-btn" data-view="sat" aria-selected="true">Saturday <small>Oct 10</small></button>
+          <button role="tab" class="seg-btn" data-view="sun" aria-selected="false">Sunday <small>Oct 11</small></button>
+        </div>
+        <button role="tab" class="seg-btn prep-btn" data-view="prep" aria-selected="false">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5.5l1.5 1.5L8 4.5M4 11l1.5 1.5L8 10M10.5 6h6M10.5 11.5h6M4.5 16h12"/></svg>
+          <span>Prep</span><small id="prepCount"></small>
+        </button>
       </div>
     </div>
 
     <section id="dayView" class="view">
       <div class="glance" id="glance"></div>
+      <div class="cam" id="cam" hidden></div>
       <div class="tl-head">
         <h2 id="dayTitle"></h2>
         <span class="hint">Tap a stop for details and to see it on the map</span>
