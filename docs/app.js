@@ -192,7 +192,7 @@ function enter(el,dir){el.style.setProperty("--dx",dir*18+"px");el.classList.rem
 function setView(v){
   var seg=document.querySelector(".seg"),from=ORDER.indexOf(state.view),to=ORDER.indexOf(v),first=!seg.classList.contains("ready");
   state.view=v;store("alg-view",v);state.sel=null;
-  seg.style.setProperty("--i",to);if(first)requestAnimationFrame(function(){seg.classList.add("ready");});
+  if(v!=="prep")seg.style.setProperty("--i",to);seg.classList.toggle("off",v==="prep");if(first)requestAnimationFrame(function(){seg.classList.add("ready");});
   enter(v==="prep"?$("prepView"):$("dayView"),first||from===to?0:to>from?1:-1);
   document.querySelectorAll(".seg-btn").forEach(function(b){b.setAttribute("aria-selected",b.dataset.view===v?"true":"false");});
   $("prepView").hidden=v!=="prep";$("dayView").hidden=v==="prep";
