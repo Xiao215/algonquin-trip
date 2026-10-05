@@ -185,13 +185,26 @@ li.now>.row .t{color:var(--maple);font-weight:600}
 .fld.pick{border-color:var(--maple);box-shadow:0 0 0 2px var(--maple-soft)}
 .site-btn{padding:7px 14px;border-radius:6px;background:#1F5E3B;color:#fff;font-size:12.5px;font-weight:600}
 .site-warn{font-size:12.5px;color:var(--maple)}
+.site-hint{font-size:12.5px;color:var(--muted)}
+.site-title{font-size:12.5px;font-weight:700}
+.site-box{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.site-box b{font-size:13.5px}
+.site-btn.pick{box-shadow:0 0 0 2px var(--maple-soft),0 0 0 3px var(--maple)}
+.site-result{font-size:13px;font-weight:600;color:var(--hike)}
+.site-prices{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:6px}
+.site-prices div{display:flex;justify-content:space-between;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface);font-size:12.5px;color:var(--muted)}
+.site-prices b{color:var(--ink);font-weight:600}
+.site-prices .pick{border-color:var(--maple);box-shadow:0 0 0 2px var(--maple-soft);color:var(--ink);font-weight:700}
+.site-chips{display:flex;flex-wrap:wrap;gap:6px}
+.site-chips span{padding:4px 11px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:12.5px;color:var(--muted)}
+.site-chips .on{border-color:var(--maple);box-shadow:0 0 0 2px var(--maple-soft);color:var(--ink);font-weight:600}
 .site-scroll{overflow-x:auto}
 .site-grid{border-collapse:collapse;font-size:12px;width:100%;min-width:420px}
 .site-grid th,.site-grid td{border:1px solid var(--line);padding:6px 8px;text-align:left;font-weight:500;color:var(--muted);background:var(--surface)}
 .site-grid thead th{font-size:11px}
 .site-grid thead th.col{color:var(--ink);font-weight:700}
 .site-grid tbody th{width:52%}
-.site-grid tr.row th{color:var(--ink);font-weight:700}
+.site-grid tr.pickrow th{color:var(--ink);font-weight:700}
 .site-grid td.hit{background:var(--maple-soft);box-shadow:inset 0 0 0 2px var(--maple);text-align:center}
 .site-grid td.hit span{font-weight:700;color:var(--maple)}
 .pill.primary{background:var(--forest);border-color:var(--forest);color:var(--surface)}

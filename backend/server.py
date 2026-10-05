@@ -70,7 +70,10 @@ def _maps(ll) -> str:
 def render_trip(t: dict) -> str:
     """Turn trip.json into plain text the model can read (coordinates trimmed to what's useful)."""
     places = t["places"]
-    out = [f"# {t['title']}", t["eyebrow"], t["lede"], "", "## Latest conditions"]
+    out = [f"# {t['title']}", t["eyebrow"], t["lede"]]
+    if t.get("group"):
+        out.append(f"Group: {t['group']['people']} people in {t['group'].get('cars', 1)} car.")
+    out += ["", "## Latest conditions"]
     out += [f"- {k}: {v}" for k, v in t["conditions"]]
     out += ["", "## Bookings"]
     for b in t["bookings"]:
@@ -116,7 +119,7 @@ def render_trip(t: dict) -> str:
     return "\n".join(out)
 
 
-SYSTEM_TEMPLATE = """You are the trip assistant for a small group of friends doing a weekend trip to Algonquin Park and Huntsville, Ontario. They open you from the trip planner page, usually on a phone, sometimes from the car or the trail.
+SYSTEM_TEMPLATE = """You are the trip assistant for a group of four friends doing a weekend trip to Algonquin Park and Huntsville, Ontario. They open you from the trip planner page, usually on a phone, sometimes from the car or the trail.
 
 The plan is written from the organizer's point of view: "you" is the driver, who lives in Markham, and "your friend" is picked up at Finch Station. The person asking could be either, so check their name before assuming.
 

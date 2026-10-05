@@ -83,7 +83,7 @@
     ],
     [
      "Covers",
-     "1 car, up to 14 people"
+     "Your 1 car, all 4 of you"
     ],
     [
      "Refund",
@@ -92,23 +92,47 @@
    ],
    "tip": "Be signed in by 6:55. Not sure which car? Enter plate `000000` and fix it later.",
    "site": {
-    "tab": "Day Use",
-    "type": "Daily Vehicle Permit (DVP)",
-    "park": "Arrowhead",
-    "arrival": "Sat, Oct 10",
-    "dates": [
-     "Fri, Oct 9",
-     "Sat, Oct 10",
-     "Sun, Oct 11"
-    ],
-    "pickDate": 1,
-    "rows": [
-     "DVP - Full Day",
-     "DVP 8am - 12pm",
-     "DVP 12pm - 5pm"
-    ],
-    "pickRow": 0,
-    "warn": "Type “Arrowhead” and pick exactly that. The list also shows “Arrow Lake” and “Sioux Narrows”."
+    "url": "reservations.ontarioparks.ca",
+    "steps": [
+     {
+      "tabs": [
+       "Campsite",
+       "Day Use",
+       "Backcountry",
+       "Roofed Accommodations"
+      ],
+      "tabOn": 1,
+      "radio": "Daily Vehicle Permit (DVP)",
+      "fields": [
+       [
+        "Park",
+        "Arrowhead"
+       ],
+       [
+        "Arrival",
+        "Sat, Oct 10"
+       ]
+      ],
+      "button": "Search",
+      "warn": "Type “Arrowhead” and pick exactly that. The list also shows “Arrow Lake” and “Sioux Narrows”."
+     },
+     {
+      "grid": {
+       "dates": [
+        "Fri, Oct 9",
+        "Sat, Oct 10",
+        "Sun, Oct 11"
+       ],
+       "pick": 1,
+       "rows": [
+        "DVP - Full Day",
+        "DVP 8am - 12pm",
+        "DVP 12pm - 5pm"
+       ],
+       "pickRow": 0
+      }
+     }
+    ]
    },
    "then": "Then: accept the notices → Checkout → name the driver → licence plate (`000000` if unsure, fix later) → pay.",
    "phone": "705-789-5105"
@@ -177,22 +201,46 @@
    ],
    "tip": "Only needed for the Lookout Trail stop. The paddle at Oxtongue Lake is outside the park. Want Booth's Rock Trail too? Pick “Booth's Rock Trail + Hwy 60” instead (same price).",
    "site": {
-    "tab": "Day Use",
-    "type": "Daily Vehicle Permit (DVP)",
-    "park": "Algonquin - Hwy 60 Corridor",
-    "arrival": "Sun, Oct 11",
-    "dates": [
-     "Sat, Oct 10",
-     "Sun, Oct 11",
-     "Mon, Oct 12"
-    ],
-    "pickDate": 1,
-    "rows": [
-     "DVP - Hwy 60 (Does not include Booth's Rock Trail)",
-     "DVP - Booth's Rock Trail + Hwy 60"
-    ],
-    "pickRow": 0,
-    "warn": "There are several “Algonquin - …” entries (Tim River, Kiosk, Kingscote…). Pick “Algonquin - Hwy 60 Corridor”."
+    "url": "reservations.ontarioparks.ca",
+    "steps": [
+     {
+      "tabs": [
+       "Campsite",
+       "Day Use",
+       "Backcountry",
+       "Roofed Accommodations"
+      ],
+      "tabOn": 1,
+      "radio": "Daily Vehicle Permit (DVP)",
+      "fields": [
+       [
+        "Park",
+        "Algonquin - Hwy 60 Corridor"
+       ],
+       [
+        "Arrival",
+        "Sun, Oct 11"
+       ]
+      ],
+      "button": "Search",
+      "warn": "There are several “Algonquin - …” entries (Tim River, Kiosk, Kingscote…). Pick “Algonquin - Hwy 60 Corridor”."
+     },
+     {
+      "grid": {
+       "dates": [
+        "Sat, Oct 10",
+        "Sun, Oct 11",
+        "Mon, Oct 12"
+       ],
+       "pick": 1,
+       "rows": [
+        "DVP - Hwy 60 (Does not include Booth's Rock Trail)",
+        "DVP - Booth's Rock Trail + Hwy 60"
+       ],
+       "pickRow": 0
+      }
+     }
+    ]
    },
    "then": "Then: accept the notices → Checkout → name the driver → licence plate (`000000` if unsure, fix later) → pay.",
    "phone": "705-633-5572"
@@ -200,11 +248,11 @@
   {
    "id": "canoe",
    "hot": false,
-   "when": "Book now",
+   "when": "Walk-in",
    "what": "Ragged Falls canoe",
    "for": "Sun Oct 11, ~9:30 AM pickup",
-   "cost": "$53.98 for a 2-person canoe",
-   "summary": "Self-guided paddle from the Algonquin Outfitters store on Oxtongue Lake. Rentals end Oct 12, so this is the last weekend. Reserve to be safe.",
+   "cost": "$107.96 for two 2-person canoes",
+   "summary": "No reservation needed: just show up at the Oxtongue Lake store. Rentals end Oct 12, so this is the last weekend.",
    "steps": [
     "Call Algonquin Outfitters at `1-800-469-4948` or `705-635-2243`.",
     "Ask for the **Ragged Falls day trip**, **Sun Oct 11**, pickup around **9:30 AM** at the **Oxtongue Lake** store.",
@@ -240,50 +288,86 @@
      "https://algonquinoutfitters.com/daytrip/ragged-falls-canoe-kayak-trip"
     ]
    ],
-   "select": [
-    [
-     "Call",
-     "1-800-469-4948"
-    ],
-    [
-     "Ask for",
-     "Ragged Falls day trip"
-    ],
-    [
-     "Store",
-     "Oxtongue Lake"
-    ],
-    [
-     "Date",
-     "Sun Oct 11, ~9:30 AM"
-    ],
-    [
-     "Boat",
-     "2-person canoe"
-    ]
-   ],
    "key": [
     [
      "Cost",
-     "$53.98"
+     "$107.96 (2 canoes)"
     ],
     [
      "Includes",
-     "Canoe, paddles, PFDs, map"
+     "Paddles, PFDs, map"
     ],
     [
      "Season",
      "Ends Oct 12"
     ]
    ],
-   "tip": "Confirm their Sunday opening time; we plan to pick up ~9:20 and return ~1:00 PM."
+   "tip": "Confirm their Sunday opening time; we plan to pick up ~9:20 and return ~1:00 PM.",
+   "site": {
+    "url": "algonquinoutfitters.com/daytrip/ragged-falls-canoe-kayak-trip",
+    "steps": [
+     {
+      "box": {
+       "title": "Book a Reservation",
+       "button": "Book Now",
+       "result": "No reservation required - just show up!"
+      },
+      "hint": "So there's nothing to book online. A call to hold a canoe on a holiday weekend is optional."
+     },
+     {
+      "prices": [
+       [
+        "2 person canoe",
+        "$53.98"
+       ],
+       [
+        "3 person canoe",
+        "$64.98"
+       ],
+       [
+        "1 person kayak",
+        "$53.98"
+       ],
+       [
+        "2 person kayak",
+        "$64.98"
+       ],
+       [
+        "Paddleboard",
+        "$53.98"
+       ]
+      ],
+      "pick": 0,
+      "hint": "Four of you: two 2 person canoes ($107.96), or one 3 person canoe plus a 1 person kayak ($118.96)."
+     },
+     {
+      "title": "At the Oxtongue Lake store counter",
+      "fields": [
+       [
+        "Ask for",
+        "Ragged Falls day trip"
+       ],
+       [
+        "Boats",
+        "2 × 2 person canoe"
+       ],
+       [
+        "When",
+        "Sun, Oct 11 · ~9:20 AM"
+       ]
+      ],
+      "hint": "1035 Algonquin Outfitters Rd, Dwight, right on Hwy 60. Includes paddles, safety kit and map."
+     }
+    ]
+   },
+   "then": "Optional: call `1-800-469-4948` to check their Sunday opening time and that canoes are still running."
   },
   {
    "id": "room",
    "hot": false,
    "when": "Book now",
    "what": "Huntsville room",
-   "for": "Sat Oct 10, 1 night",
+   "for": "Sat Oct 10, 1 night, 4 people",
    "cost": "Varies; holiday-weekend prices",
    "summary": "One night in Huntsville. Saturday's plan has us checking in around 3:00 PM, then walking downtown.",
    "steps": [
@@ -309,23 +393,10 @@
    "tips": [
     "Thanksgiving weekend fills up and prices climb, so don't wait."
    ],
-   "links": [],
-   "select": [
+   "links": [
     [
-     "Where",
-     "Huntsville, near Main St"
-    ],
-    [
-     "Dates",
-     "Sat Oct 10 → Sun Oct 11"
-    ],
-    [
-     "Check-in",
-     "~3:00 PM"
-    ],
-    [
-     "Rate",
-     "Free cancellation"
+     "Google Hotels",
+     "https://www.google.com/travel/search?q=hotels%20in%20Huntsville%2C%20Ontario"
     ]
    ],
    "key": [
@@ -338,14 +409,51 @@
      "8:45 AM Sun"
     ]
    ],
-   "tip": "Holiday weekend: prices climb, so book soon."
+   "tip": "Holiday weekend: prices climb, so book soon.",
+   "site": {
+    "url": "google.com/travel/hotels",
+    "steps": [
+     {
+      "fields": [
+       [
+        "Where",
+        "Huntsville, ON"
+       ],
+       [
+        "Check-in",
+        "Sat, Oct 10"
+       ],
+       [
+        "Check-out",
+        "Sun, Oct 11"
+       ],
+       [
+        "Guests",
+        "4 adults"
+       ]
+      ],
+      "button": "Search"
+     },
+     {
+      "chips": [
+       "Free cancellation",
+       "Parking"
+      ],
+      "chipOn": [
+       0,
+       1
+      ],
+      "hint": "Look for a room with 2 beds (or book 2 rooms), then use the map view to pick something walkable to Main Street. Check-in is around 3:00 PM."
+     }
+    ]
+   }
   },
   {
    "id": "dinner",
    "hot": false,
    "when": "This week",
    "what": "Saturday dinner",
-   "for": "Sat Oct 10, ~7:00 PM",
+   "for": "Sat Oct 10, ~7:00 PM, 4 people",
    "cost": "",
    "summary": "Dinner on Main Street after sunset at Lion's Lookout. A reservation helps on a holiday weekend.",
    "steps": [
@@ -356,19 +464,43 @@
    "tips": [
     "No early alarm: Sunday starts at 8:45."
    ],
-   "links": [],
-   "select": [
+   "links": [
     [
-     "Where",
-     "Main St, Huntsville"
-    ],
-    [
-     "When",
-     "Sat Oct 10, ~7:00 PM"
+     "OpenTable",
+     "https://www.opentable.ca/s?dateTime=2026-10-10T19%3A00&covers=4&term=Huntsville%2C%20ON"
     ]
    ],
    "key": [],
-   "tip": "Sunset at Lion's Lookout is ~6:40, 10 minutes from downtown."
+   "tip": "Sunset at Lion's Lookout is ~6:40, 10 minutes from downtown.",
+   "site": {
+    "url": "opentable.ca",
+    "steps": [
+     {
+      "fields": [
+       [
+        "Date",
+        "Sat, Oct 10"
+       ],
+       [
+        "Time",
+        "7:00 PM"
+       ],
+       [
+        "People",
+        "4 people"
+       ],
+       [
+        "Location",
+        "Huntsville, ON"
+       ]
+      ],
+      "button": "Let's go"
+     },
+     {
+      "hint": "Pick a spot on Main Street. Sunset at Lion's Lookout is ~6:40 and it's 10 minutes back to downtown."
+     }
+    ]
+   }
   }
  ],
  "prep": [
@@ -1406,5 +1538,9 @@
    "lon": -78.7,
    "label": "Oxtongue Lake & Algonquin"
   }
+ },
+ "group": {
+  "people": 4,
+  "cars": 1
  }
 }
