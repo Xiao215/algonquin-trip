@@ -57,6 +57,8 @@ The backend also serves the site at **http://localhost:8790/**. The API lives un
 
 The repo is https://github.com/Xiao215/algonquin-trip, and GitHub Pages serves the `docs/` folder from `main` at https://xiao215.github.io/algonquin-trip/. Push to update it; the rebuild takes about a minute.
 
+Browsers may reuse a file for 10 minutes, so `index.html` links each CSS and JS file with a hash of its contents (`styles.css?v=…`) to make visitors fetch the matching version. A pre-commit hook updates the hashes; turn it on once per clone with `git config core.hooksPath .githooks`, or run `python3 scripts/stamp_assets.py` before committing.
+
 If the page is ever served from a different origin, add it to `ALLOWED_ORIGINS` in `backend/.env`.
 
 ## Edit the plan

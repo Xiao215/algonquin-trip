@@ -28,22 +28,22 @@ function torontoNow(){var p={};new Intl.DateTimeFormat("en-CA",{timeZone:"Americ
   return {date:p.year+"-"+p.month+"-"+p.day,mins:+p.hour*60+ +p.minute};}
 function daysBetween(a,b){return Math.round((Date.parse(b+"T12:00:00Z")-Date.parse(a+"T12:00:00Z"))/864e5);}
 var ICON={
-  maps:'<svg viewBox="0 0 20 20"><path d="M10 18s-5.5-5.2-5.5-9.5a5.5 5.5 0 0 1 11 0C15.5 12.8 10 18 10 18z"/><circle cx="10" cy="8.5" r="2"/></svg>',
-  dir:'<svg viewBox="0 0 20 20"><path d="M8 4H4v12h12v-4M11 3h6v6M17 3l-8 8"/></svg>',
-  ask:'<svg viewBox="0 0 20 20"><path d="M4 4.5h12v8H9l-4 3v-3H4z"/></svg>',
-  phone:'<svg viewBox="0 0 20 20"><path d="M5 3h3l1.5 4-2 1.2a9 9 0 0 0 4.3 4.3L13 10.5l4 1.5v3a2 2 0 0 1-2 2A12 12 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>',
-  check:'<svg viewBox="0 0 20 20"><path d="M4 10.5l4 4 8-9"/></svg>',
-  car:'<svg viewBox="0 0 20 20"><path d="M4 13V9.5L5.6 5h8.8L16 9.5V13M4 13h12M4 13v2M16 13v2"/></svg>',
-  cam:'<svg viewBox="0 0 20 20"><rect x="2.5" y="5.5" width="11" height="9" rx="2"/><path d="M13.5 9l4-2.5v7l-4-2.5"/></svg>',
-  chev:'<svg class="chev" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5"/></svg>'
+  maps:'<svg width="16" height="16" viewBox="0 0 20 20"><path d="M10 18s-5.5-5.2-5.5-9.5a5.5 5.5 0 0 1 11 0C15.5 12.8 10 18 10 18z"/><circle cx="10" cy="8.5" r="2"/></svg>',
+  dir:'<svg width="16" height="16" viewBox="0 0 20 20"><path d="M8 4H4v12h12v-4M11 3h6v6M17 3l-8 8"/></svg>',
+  ask:'<svg width="16" height="16" viewBox="0 0 20 20"><path d="M4 4.5h12v8H9l-4 3v-3H4z"/></svg>',
+  phone:'<svg width="16" height="16" viewBox="0 0 20 20"><path d="M5 3h3l1.5 4-2 1.2a9 9 0 0 0 4.3 4.3L13 10.5l4 1.5v3a2 2 0 0 1-2 2A12 12 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>',
+  check:'<svg width="16" height="16" viewBox="0 0 20 20"><path d="M4 10.5l4 4 8-9"/></svg>',
+  car:'<svg width="16" height="16" viewBox="0 0 20 20"><path d="M4 13V9.5L5.6 5h8.8L16 9.5V13M4 13h12M4 13v2M16 13v2"/></svg>',
+  cam:'<svg width="16" height="16" viewBox="0 0 20 20"><rect x="2.5" y="5.5" width="11" height="9" rx="2"/><path d="M13.5 9l4-2.5v7l-4-2.5"/></svg>',
+  chev:'<svg class="chev" width="16" height="16" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5"/></svg>'
 };
-var WX={sun:'<svg viewBox="0 0 48 48"><g class="sun"><circle cx="24" cy="24" r="8"/><path d="M24 6v5M24 37v5M6 24h5M37 24h5M11 11l3.5 3.5M33.5 33.5 37 37M11 37l3.5-3.5M33.5 14.5 37 11"/></g></svg>',
-  part:'<svg viewBox="0 0 48 48"><g class="sun"><circle cx="18" cy="17" r="6"/><path d="M18 5v3M6 17h3M9.5 8.5l2 2M26.5 8.5l-2 2"/></g><path d="M16 38h20a7 7 0 0 0 0-14 10 10 0 0 0-19 3 5.5 5.5 0 0 0-1 11z"/></svg>',
-  cloud:'<svg viewBox="0 0 48 48"><path d="M13 36h22a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0-1 13z"/></svg>',
-  rain:'<svg viewBox="0 0 48 48"><path d="M13 30h22a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0-1 13z"/><path d="M17 35l-2 5M25 35l-2 5M33 35l-2 5"/></svg>',
-  snow:'<svg viewBox="0 0 48 48"><path d="M13 30h22a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0-1 13z"/><path d="M17 37h.01M24 40h.01M31 37h.01"/></svg>',
-  fog:'<svg viewBox="0 0 48 48"><path d="M10 20h28M6 27h36M10 34h28"/></svg>',
-  storm:'<svg viewBox="0 0 48 48"><path d="M13 30h22a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0-1 13z"/><path d="M25 32l-4 6h6l-4 6"/></svg>'};
+var WX={sun:'<svg width="46" height="46" viewBox="0 0 48 48"><g class="sun"><circle cx="24" cy="24" r="8"/><path d="M24 6v5M24 37v5M6 24h5M37 24h5M11 11l3.5 3.5M33.5 33.5 37 37M11 37l3.5-3.5M33.5 14.5 37 11"/></g></svg>',
+  part:'<svg width="46" height="46" viewBox="0 0 48 48"><g class="sun"><circle cx="18" cy="17" r="6"/><path d="M18 5v3M6 17h3M9.5 8.5l2 2M26.5 8.5l-2 2"/></g><path d="M16 38h20a7 7 0 0 0 0-14 10 10 0 0 0-19 3 5.5 5.5 0 0 0-1 11z"/></svg>',
+  cloud:'<svg width="46" height="46" viewBox="0 0 48 48"><path d="M13 36h22a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0-1 13z"/></svg>',
+  rain:'<svg width="46" height="46" viewBox="0 0 48 48"><path d="M13 30h22a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0-1 13z"/><path d="M17 35l-2 5M25 35l-2 5M33 35l-2 5"/></svg>',
+  snow:'<svg width="46" height="46" viewBox="0 0 48 48"><path d="M13 30h22a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0-1 13z"/><path d="M17 37h.01M24 40h.01M31 37h.01"/></svg>',
+  fog:'<svg width="46" height="46" viewBox="0 0 48 48"><path d="M10 20h28M6 27h36M10 34h28"/></svg>',
+  storm:'<svg width="46" height="46" viewBox="0 0 48 48"><path d="M13 30h22a8 8 0 0 0 0-16 11 11 0 0 0-21 3 6.5 6.5 0 0 0-1 13z"/><path d="M25 32l-4 6h6l-4 6"/></svg>'};
 function wmo(c){if(c===0)return ["Clear","sun"];if(c<=2)return ["Partly cloudy","part"];if(c===3)return ["Overcast","cloud"];if(c<=48)return ["Fog","fog"];
   if(c<=57)return ["Drizzle","rain"];if(c<=67)return ["Rain","rain"];if(c<=77)return ["Snow","snow"];if(c<=82)return ["Showers","rain"];if(c<=86)return ["Snow showers","snow"];return ["Thunderstorms","storm"];}
 
@@ -109,7 +109,7 @@ function renderPrep(){
     var h='<details class="booking'+(b.hot?" hot":"")+(isDone?" done":"")+'" id="bk-'+esc(b.id)+'"'+(nb&&nb.id===b.id?" open":"")+'>';
     h+='<summary><span class="b-date">'+badge+'</span><span class="b-title">'+esc(b.what)+'</span>';
     h+='<span class="b-line"><span class="due">'+esc(due)+'</span>'+[siteVal(b,"Park")||siteVal(b,"Where")||siteVal(b,"Location")||val("Store"),b.for.split(",")[0],val("Cost")].filter(Boolean).map(function(x){return " · "+esc(x);}).join("")+'</span>';
-    h+='<svg class="b-chev" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5"/></svg></summary><div class="b-body">';
+    h+='<svg class="b-chev" width="16" height="16" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5"/></svg></summary><div class="b-body">';
     // a small replica of the booking site with the exact choices highlighted
     if(b.site)h+=siteMock(b.site)+(b.then?'<p class="b-then">'+inline(b.then)+"</p>":"");
     // what to pick, in the order the booking site asks for it
@@ -300,7 +300,7 @@ function renderCam(){
   var c=(T.webcams||{})[state.view],el=$("cam");el.hidden=!c;if(!c){el.innerHTML="";return;}
   el.innerHTML='<div class="cam-head"><h3>'+ICON.cam+'Live from '+esc(c.name)+'</h3><span class="live">LIVE</span>'+
     '<a class="cam-out" href="'+esc(c.page)+'" target="_blank" rel="noopener">Park webcam page'+ICON.dir+'</a></div>'+
-    '<div class="cam-frame"><button class="cam-play" type="button" aria-label="Play the live webcam"><span class="cam-btn"><svg viewBox="0 0 20 20"><path d="M7 5l8 5-8 5z"/></svg></span>Watch live'+(c.km?' · km '+esc(c.km)+' on Hwy 60':'')+'</button></div>'+
+    '<div class="cam-frame"><button class="cam-play" type="button" aria-label="Play the live webcam"><span class="cam-btn"><svg width="16" height="16" viewBox="0 0 20 20"><path d="M7 5l8 5-8 5z"/></svg></span>Watch live'+(c.km?' · km '+esc(c.km)+' on Hwy 60':'')+'</button></div>'+
     '<p class="cam-note">'+esc(c.note)+'</p>';
   el.querySelector(".cam-play").addEventListener("click",function(){
     var f=document.createElement("iframe");f.src=c.embed;f.title="Live webcam: "+c.name;

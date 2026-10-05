@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600;700&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=881c51d8">
 </head>
 <body>
 <div class="app">
@@ -30,7 +30,7 @@
           <button role="tab" class="seg-btn" data-view="sun" aria-selected="false">Sunday <small>Oct 11</small></button>
         </div>
         <button role="tab" class="seg-btn prep-btn" data-view="prep" aria-selected="false">
-          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5.5l1.5 1.5L8 4.5M4 11l1.5 1.5L8 10M10.5 6h6M10.5 11.5h6M4.5 16h12"/></svg>
+          <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5.5l1.5 1.5L8 4.5M4 11l1.5 1.5L8 10M10.5 6h6M10.5 11.5h6M4.5 16h12"/></svg>
           <span>Prep</span><small id="prepCount"></small>
         </button>
       </div>
@@ -62,10 +62,10 @@
       <div id="map" class="map" role="region" aria-label="Map of the weekend route"></div>
       <div class="map-tools" role="toolbar" aria-label="Map">
         <button class="tool" id="fitBtn" title="Show the whole day">
-          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 7V3h4M13 3h4v4M17 13v4h-4M7 17H3v-4"/></svg><span>Whole day</span>
+          <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 7V3h4M13 3h4v4M17 13v4h-4M7 17H3v-4"/></svg><span>Whole day</span>
         </button>
         <a class="tool" id="dayRoute" href="https://www.google.com/maps" target="_blank" rel="noopener" title="Open the day's route in Google Maps">
-          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 4H4v12h12v-4M11 3h6v6M17 3l-8 8"/></svg><span>Directions</span>
+          <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M8 4H4v12h12v-4M11 3h6v6M17 3l-8 8"/></svg><span>Directions</span>
         </a>
       </div>
       <div class="map-caption" id="mapCaption"></div>
@@ -78,10 +78,10 @@
     <header class="cli-head">
       <div class="cli-title"><b>Trip assistant</b><span class="cli-status" id="chatSub">Connecting…</span></div>
       <button type="button" class="cli-btn" id="chatNew" title="Clear this conversation and start over">
-        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg><span>New chat</span>
+        <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg><span>New chat</span>
       </button>
       <button type="button" class="cli-btn icon" id="chatHide" aria-label="Hide chat" title="Hide (Esc). Answers keep coming while hidden.">
-        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
+        <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
       </button>
     </header>
     <div class="cli-log" id="chatLog" aria-live="polite"></div>
@@ -92,21 +92,21 @@
       <span class="cli-err" id="joinErr" role="alert"></span>
     </form>
     <form class="cli-input" id="chatForm">
-      <svg class="cli-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h7A2.5 2.5 0 0 1 16 5.5v5a2.5 2.5 0 0 1-2.5 2.5H9l-4 3.5V13a2.5 2.5 0 0 1-1-2z"/></svg>
+      <svg class="cli-icon" width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h7A2.5 2.5 0 0 1 16 5.5v5a2.5 2.5 0 0 1-2.5 2.5H9l-4 3.5V13a2.5 2.5 0 0 1-1-2z"/></svg>
       <textarea id="chatText" rows="1" placeholder="Ask about the trip…" aria-label="Ask the trip assistant" maxlength="2000"></textarea>
       <button type="button" class="cli-badge" id="chatBadge" hidden></button>
       <kbd class="cli-kbd" id="chatKbd">⌘K</kbd>
       <button type="submit" class="cli-send" id="chatSend" aria-label="Send" title="Send">
-        <svg class="i-send" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4M5 9l5-5 5 5"/></svg>
-        <svg class="i-stop" viewBox="0 0 20 20" aria-hidden="true"><rect x="6" y="6" width="8" height="8" rx="1.5"/></svg>
+        <svg class="i-send" width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4M5 9l5-5 5 5"/></svg>
+        <svg class="i-stop" width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><rect x="6" y="6" width="8" height="8" rx="1.5"/></svg>
       </button>
     </form>
     <div class="cli-foot">Enter to send · Shift+Enter for a new line · Esc to hide</div>
   </div>
 </section>
 
-<script src="config.js"></script>
-<script src="app.js"></script>
-<script src="chat.js"></script>
+<script src="config.js?v=f725307a"></script>
+<script src="app.js?v=b1a44d9e"></script>
+<script src="chat.js?v=354c2314"></script>
 </body>
 </html>

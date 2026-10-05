@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Re-stamp the CSS/JS links in docs/index.html when any of them is part of this commit.
+set -euo pipefail
+if git diff --cached --name-only | grep -qE '^docs/.*\.(css|js|html)$'; then
+  python3 scripts/stamp_assets.py
+  git add docs/index.html
+fi
