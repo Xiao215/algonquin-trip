@@ -3,6 +3,7 @@
    assistant is a floating rounded box that can be dragged anywhere.
    Look: Hwy 60 park-sign slab type, spruce greens, a maple accent. */
 :root{
+  --ease:cubic-bezier(.2,.8,.2,1); --ease-spring:cubic-bezier(.34,1.4,.5,1);
   --bg:#E9EDE6; --surface:#FBFCF8; --surface-2:#F2F5EE; --ink:#16241E; --muted:#5A6A62; --line:#D6DDD3;
   --forest:#2F5A45; --forest-soft:#E0E9DC; --lake:#2C6688; --lake-soft:#DCEAF2;
   --maple:#C2461F; --maple-soft:#F8E4DA; --hike:#2F7A4E; --hike-soft:#DDEFE2; --road:#5E6B65;
@@ -65,10 +66,14 @@ button.chip.due{background:var(--maple);color:#fff;font-weight:600;cursor:pointe
 button.chip.due:hover{filter:brightness(1.08)}
 
 .sticky{position:sticky;top:0;z-index:5;padding:10px 0;margin-bottom:6px;background:linear-gradient(var(--bg) 80%,transparent)}
-.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;background:var(--surface);border:1px solid var(--line);border-radius:14px;max-width:560px}
-.seg-btn{border:0;background:transparent;border-radius:10px;padding:8px 6px;font-weight:600;font-size:14.5px;color:var(--muted);cursor:pointer;display:flex;align-items:baseline;justify-content:center;gap:6px}
+.seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;background:var(--surface);border:1px solid var(--line);border-radius:14px;max-width:560px}
+.seg-btn{position:relative;z-index:1;transition:color .25s;border:0;background:transparent;border-radius:10px;padding:8px 6px;font-weight:600;font-size:14.5px;color:var(--muted);cursor:pointer;display:flex;align-items:baseline;justify-content:center;gap:6px}
 .seg-btn small{font-family:var(--f-mono);font-size:11px;font-weight:500;opacity:.8}
-.seg-btn[aria-selected="true"]{background:var(--forest);color:var(--surface)}
+.seg-btn[aria-selected="true"]{color:var(--surface)}
+/* the selected tab's pill slides between tabs; --i is the selected index, set in setView */
+.seg::before{content:"";position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 16px)/3);border-radius:10px;background:var(--forest);box-shadow:0 2px 8px -2px rgba(20,35,28,.35);transform:translateX(calc(var(--i,0)*(100% + 4px)))}
+.seg.ready::before{transition:transform .42s var(--ease-spring)}
+.seg-btn:not([aria-selected="true"]):hover{color:var(--ink)}
 .view[hidden]{display:none}
 
 /* ---------- day at a glance ---------- */
@@ -90,6 +95,24 @@ button.chip.due:hover{filter:brightness(1.08)}
 .stat .sub{font-size:11.5px;color:var(--muted)}
 .nownext{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;padding:10px 18px;border-top:1px solid var(--line);background:var(--maple-soft);font-size:13.5px}
 .nownext b{font-family:var(--f-mono);font-size:11px;letter-spacing:.07em;color:var(--maple);margin-right:6px}
+
+/* ---------- live webcam ---------- */
+.cam{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden;margin:-8px 0 22px}
+.cam-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:12px 16px}
+.cam-head h3{display:flex;align-items:center;gap:8px;font-size:17px}
+.cam-head h3 svg,.cam-out svg{width:17px;height:17px;fill:none;stroke:var(--lake);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cam-out svg{width:13px;height:13px;stroke:currentColor}
+.live{font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;color:var(--maple);background:var(--maple-soft);padding:2px 7px;border-radius:999px}
+.live::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--maple);margin-right:5px;vertical-align:1px}
+.cam-out{margin-left:auto;display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;text-decoration:none}
+.cam-frame{position:relative;aspect-ratio:16/5;min-height:120px;background:var(--forest-soft);transition:aspect-ratio .25s}
+.cam-frame.on{aspect-ratio:16/9}
+.cam-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.cam-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:0;cursor:pointer;font-size:14px;font-weight:600;color:var(--forest);background:radial-gradient(circle at 50% 45%,var(--surface-2),var(--forest-soft) 70%)}
+.cam-btn{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--forest);box-shadow:var(--shadow);transition:transform .15s}
+.cam-btn svg{width:22px;height:22px;fill:var(--surface);margin-left:3px}
+.cam-play:hover .cam-btn{transform:scale(1.06)}
+.cam-note{padding:10px 16px 14px;font-size:13px;color:var(--muted)}
 
 /* ---------- timeline ---------- */
 .tl-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px;margin:0 0 10px}
@@ -115,7 +138,8 @@ li.open>.row{background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);bo
 li.open>.row .chev{transform:rotate(180deg)}
 li.now>.row .t{color:var(--maple);font-weight:600}
 
-.detail{margin:0 0 10px;padding:4px 18px 16px 120px;background:var(--surface);border:1px solid var(--line);border-top:0;border-radius:0 0 14px 14px;display:grid;gap:12px}
+.detail-wrap{padding-bottom:10px}
+.detail{margin:0;padding:4px 18px 16px 120px;background:var(--surface);border:1px solid var(--line);border-top:0;border-radius:0 0 14px 14px;display:grid;gap:12px}
 .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:0}
 .facts div{min-width:0;border-left:2px solid var(--line);padding-left:10px}
 .facts dt{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
@@ -345,4 +369,73 @@ li.now>.row .t{color:var(--maple);font-weight:600}
   .b-date{width:48px;height:48px}
   .tl-head .hint{display:none}
   .seg-btn{flex-direction:column;align-items:center;gap:0;line-height:1.2;padding:7px 4px}
+}
+
+/* ---------- motion ---------- */
+@keyframes rise{from{opacity:0;transform:translate(var(--dx,0px),10px)}}
+@keyframes fade{from{opacity:0}}
+@keyframes drop{from{opacity:0;transform:translateY(-6px)}}
+@keyframes tick{0%{transform:rotate(-45deg) translate(1px,-1px) scale(0)}60%{transform:rotate(-45deg) translate(1px,-1px) scale(1.25)}}
+@keyframes nowring{0%{box-shadow:0 0 0 3px var(--bg),0 0 0 3px color-mix(in srgb,var(--maple) 60%,transparent)}80%,100%{box-shadow:0 0 0 3px var(--bg),0 0 0 11px transparent}}
+
+/* page load: header pieces rise in one after another */
+.top>*{animation:rise .5s var(--ease) backwards}
+.top>:nth-child(2){animation-delay:.06s}.top>:nth-child(3){animation-delay:.12s}.top>:nth-child(4){animation-delay:.18s}
+.sticky{animation:fade .5s .2s var(--ease) backwards}
+.mapcol{animation:fade .7s .15s var(--ease) backwards}
+
+/* switching tabs: cards, then timeline rows, slide in from the side of the new tab (--dx) */
+.view.enter>*{animation:rise .42s var(--ease) backwards}
+.view.enter>:nth-child(2){animation-delay:.05s}.view.enter>:nth-child(3){animation-delay:.1s}.view.enter>:nth-child(n+4){animation-delay:.15s}
+.view.enter .timeline>li{animation:rise .4s var(--ease) backwards;animation-delay:calc(.14s + var(--r,0)*.025s)}
+.view.enter .booking,.view.enter .checklist{animation:rise .4s var(--ease) backwards}
+.view.enter .booking:nth-child(2){animation-delay:.05s}.view.enter .booking:nth-child(3){animation-delay:.1s}.view.enter .booking:nth-child(n+4){animation-delay:.15s}
+
+/* timeline: rows ease their highlight, details drop in (height is animated in app.js) */
+.row{transition:background-color .2s,box-shadow .2s,border-radius .2s}
+.row .num{transition:transform .2s var(--ease-spring)}
+.row:hover .num{transform:scale(1.08)}
+.row .chev,.b-chev,.more-btn svg{transition:transform .3s var(--ease)}
+.detail-wrap:not(.closing) .detail{animation:drop .3s var(--ease)}
+li.now>.row:not(.drive) .num{animation:nowring 2.4s ease-out infinite}
+
+/* bookings and "All steps" open smoothly where the browser can animate to height:auto */
+@supports (interpolate-size:allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  .booking::details-content,.allsteps::details-content{height:0;opacity:0;overflow:clip;transition:height .35s var(--ease),opacity .3s,content-visibility .35s allow-discrete}
+  .booking[open]::details-content,.allsteps[open]::details-content{height:auto;opacity:1}
+}
+.booking{transition:border-color .2s,box-shadow .25s}
+.booking[open]{box-shadow:0 6px 24px -12px rgba(20,35,28,.3)}
+.booking>summary{transition:background-color .2s}
+.b-date{transition:background-color .3s,color .3s,transform .3s var(--ease-spring)}
+.booking>summary:hover .b-date{transform:scale(1.05)}
+
+/* checklists */
+.citem{transition:background-color .15s}
+.more:not([hidden]){animation:drop .25s var(--ease)}
+.check input{transition:background-color .15s,border-color .15s}
+.check input:checked::after{animation:tick .3s var(--ease)}
+.check span{transition:color .2s}
+
+/* buttons: quick hover, a small press */
+.pill,.tool,.chip,.more-btn,.cam-out{transition:border-color .15s,background-color .15s,color .15s,transform .15s var(--ease),filter .15s}
+.pill:hover,.tool:hover{transform:translateY(-1px)}
+.pill:active,.tool:active,button.chip:active,.seg-btn:active,.more-btn:active{transform:scale(.96)}
+
+/* map caption and webcam */
+.map-caption.swap{animation:rise .3s var(--ease)}
+.cam-frame iframe{animation:fade .6s .2s var(--ease) backwards}
+.cam-play{transition:filter .2s}
+.cam-play:hover{filter:brightness(1.03)}
+
+/* chat: the log and footer fade up when the box opens */
+.cli-box{transition:border-color .2s,box-shadow .3s}
+.cli[data-open="true"] .cli-box{box-shadow:0 14px 44px -10px rgba(16,32,24,.35)}
+.cli[data-open="true"] .cli-log{animation:rise .3s var(--ease)}
+.cli[data-open="true"] .cli-foot{animation:fade .3s .05s var(--ease) backwards}
+.cli-log>*{animation:rise .3s var(--ease)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }

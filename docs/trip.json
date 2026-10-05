@@ -593,6 +593,10 @@
   [
    "Ragged Falls paddle",
    "https://algonquinoutfitters.com/daytrip/ragged-falls-canoe-kayak-trip"
+  ],
+  [
+   "Algonquin live webcam",
+   "https://www.algonquinpark.on.ca/virtual/webcam/index.php"
   ]
  ],
  "footnote": "Times are a plan, not a schedule. Holiday traffic on the 400 can add 30–60 minutes.",
@@ -1413,6 +1417,12 @@
      "body": "The back deck looks out over a huge sweep of forest and marsh. Last washroom and coffee before the drive home.",
      "tips": [
       "Closes at 5, so don't linger at the boardwalk."
+     ],
+     "links": [
+      [
+       "Live webcam",
+       "https://www.algonquinpark.on.ca/virtual/webcam/index.php"
+      ]
      ]
     },
     {
@@ -1537,6 +1547,15 @@
    "lat": 45.45,
    "lon": -78.7,
    "label": "Oxtongue Lake & Algonquin"
+  }
+ },
+ "webcams": {
+  "sun": {
+   "name": "Algonquin Visitor Centre",
+   "km": "43",
+   "embed": "https://camstreamer.com/embed/X2izmPr6EifxTE5L0h4QCRjX27vXslrrzxH4bseS",
+   "page": "https://www.algonquinpark.on.ca/virtual/webcam/index.php",
+   "note": "Live 4K from the Visitor Centre, the same view as its back deck (your last stop Sunday). Good for checking colour, fog and rain before you drive up. The park's page can rewind 12 hours."
   }
  },
  "group": {
