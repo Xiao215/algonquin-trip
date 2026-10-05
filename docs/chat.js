@@ -91,10 +91,10 @@ function health(){
 }
 health();
 
-/* ---------- trip code (only when the backend is the public, shared one) ---------- */
+/* ---------- access code ---------- */
 join.addEventListener("submit",function(e){
   e.preventDefault();var code=$("joinCode").value.trim(),err=$("joinErr");if(!code)return;err.textContent="checking…";
-  fetch(API+"/api/check",{method:"POST",headers:{"X-Trip-Code":code}}).then(function(r){
+  fetch(API+"/api/check",{method:"POST",headers:{"X-Access-Code":code}}).then(function(r){
     if(r.status===401){err.textContent="wrong code";return;}
     if(!r.ok)throw new Error();
     S.code=code;save();err.textContent="";join.hidden=true;
@@ -126,10 +126,10 @@ function ask(q){
 
   function stopSpin(){clearInterval(spin);st.remove();}
   function finish(stopped){var m={role:"assistant",content:acc,ts:Date.now(),stopped:stopped||undefined};S.msgs.push(m);save();fillBot(el,m);}
-  fetch(API+"/api/chat",{method:"POST",signal:ctrl&&ctrl.signal,headers:{"Content-Type":"application/json","X-Trip-Code":S.code||""},
+  fetch(API+"/api/chat",{method:"POST",signal:ctrl&&ctrl.signal,headers:{"Content-Type":"application/json","X-Access-Code":S.code||""},
     body:JSON.stringify({name:"",messages:history(),context:ctx})})
   .then(function(r){
-    if(r.status===401){S.code=null;needCode=true;save();throw new Error("This server needs the trip code.");}
+    if(r.status===401){S.code=null;needCode=true;save();throw new Error("This server needs the access code.");}
     if(!r.ok)return r.json().catch(function(){return {};}).then(function(j){throw new Error(j.detail||"The trip server had a problem ("+r.status+").");});
     var reader=r.body.getReader(),dec=new TextDecoder(),buf="";
     function handle(ev){

@@ -34,7 +34,7 @@ With a key you get the full map: every drive drawn on real roads, the hike and p
 
 ## Run the backend
 
-1. In `backend/.env`, set `TRIP_CODE` to a passcode only you know. The chat asks for it once per device.
+1. In `backend/.env`, set `ACCESS_CODE` to a code only you know. The chat asks for it once per device.
 2. Answers come from your local claude-api (`ANTHROPIC_BASE_URL=http://127.0.0.1:8787`) on your Pro/Max plan, so this chat is for you only. To use a paid API key instead, remove that line and set `ANTHROPIC_API_KEY`.
 3. Make sure the Tailscale app is running on this Mac, then:
 
@@ -45,7 +45,7 @@ With a key you get the full map: every drive drawn on real roads, the hike and p
    This serves the backend on `127.0.0.1:8790` and publishes it with Tailscale Funnel at
    `https://xiaos-macbook-pro.tail3d8516.ts.net:8443`, reachable from any network. Your phone does not need Tailscale. Port 443 is left alone because another app on this Mac already uses it.
 
-Open **https://xiao215.github.io/algonquin-trip/** on any device and type your passcode the first time you use the chat. The chat only works while your Mac is awake, online and running `start.sh`; the rest of the page always works. To unpublish the backend:
+Open **https://xiao215.github.io/algonquin-trip/** on any device and type your access code the first time you use the chat. The chat only works while your Mac is awake, online and running `start.sh`; the rest of the page always works. To unpublish the backend:
 
 ```bash
 tailscale funnel --https=8443 off
@@ -84,4 +84,4 @@ Then open `http://localhost:8000/?api=http://localhost:8790` to point the chat a
 | `MODEL` | `claude-opus-5-5` | |
 | `EFFORT` | `low` | Fast, cheap chat replies. Use `medium` for more careful answers. |
 | `FALLBACKS` | `default` | Server-side refusal fallback. Set `off` if the API ever rejects it. |
-| `PER_IP_PER_10MIN` / `DAILY_LIMIT` | `20` / `300` | Extra guards on top of the passcode, since the URL is public. |
+| `DAILY_LIMIT` | `1000` | Most questions per day (resets at midnight Toronto time), on top of the access code. |

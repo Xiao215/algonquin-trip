@@ -9,15 +9,13 @@ import hmac
 import json
 import os
 import re
-import time
-from collections import defaultdict, deque
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import anthropic
 from dotenv import load_dotenv
-from fastapi import FastAPI, Header, HTTPException, Request
+from fastapi import FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
@@ -33,19 +31,18 @@ BASE_URL = os.getenv("ANTHROPIC_BASE_URL", "")
 # A local Anthropic-compatible server (e.g. claude-api on :8787) answers on your own Pro/Max plan.
 LOCAL_AI = bool(re.match(r"https?://(localhost|127\.0\.0\.1)(:|/|$)", BASE_URL))
 FALLBACKS = os.getenv("FALLBACKS", "off" if LOCAL_AI else "default")  # "off" disables server-side refusal fallback
-# The backend is public through Funnel, so the passcode is always required.
+# The backend is public through Funnel, so the access code is always required.
 REQUIRE_CODE = True
-TRIP_CODE = os.getenv("TRIP_CODE", "")
-if not TRIP_CODE or TRIP_CODE == "change-me":
-    raise SystemExit("Set TRIP_CODE in backend/.env (the passcode you type into the chat).")
+ACCESS_CODE = os.getenv("ACCESS_CODE", "")
+if not ACCESS_CODE or ACCESS_CODE == "change-me":
+    raise SystemExit("Set ACCESS_CODE in backend/.env (the code you type into the chat).")
 ALLOWED_ORIGINS = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "").split(",") if o.strip()]
-PER_IP_LIMIT = int(os.getenv("PER_IP_PER_10MIN", "20"))
-DAILY_LIMIT = int(os.getenv("DAILY_LIMIT", "300"))
+DAILY_LIMIT = int(os.getenv("DAILY_LIMIT", "1000"))
 TZ = ZoneInfo("America/Toronto")
 
 
 if LOCAL_AI:
-    print(f"Using the local AI server at {BASE_URL} (personal use; passcode required).", flush=True)
+    print(f"Using the local AI server at {BASE_URL} (personal use; access code required).", flush=True)
 elif not os.getenv("ANTHROPIC_API_KEY"):
     print("Warning: ANTHROPIC_API_KEY is not set in backend/.env; chat requests will fail.", flush=True)
 client = anthropic.AsyncAnthropic(api_key=os.getenv("ANTHROPIC_API_KEY") or ("unused" if LOCAL_AI else None))
@@ -55,7 +52,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS or ["*"],
     allow_methods=["GET", "POST"],
-    allow_headers=["Content-Type", "X-Trip-Code"],
+    allow_headers=["Content-Type", "X-Access-Code"],
 )
 
 
@@ -159,38 +156,24 @@ WEB_SEARCH = {
 }
 
 
-# ---------- guard rails: passcode + rate limits ----------
+# ---------- guard rails: access code + daily limit ----------
 
-_hits: dict[str, deque] = defaultdict(deque)
 _daily = {"day": None, "count": 0}
 
 
 def check_code(code: str | None) -> None:
     if not REQUIRE_CODE:
         return
-    if not code or not hmac.compare_digest(code.strip().encode(), TRIP_CODE.encode()):
-        raise HTTPException(401, "Wrong trip code.")
+    if not code or not hmac.compare_digest(code.strip().encode(), ACCESS_CODE.encode()):
+        raise HTTPException(401, "Wrong access code.")
 
 
-def client_ip(req: Request) -> str:
-    # Tailscale Funnel proxies to localhost and passes the visitor's address along.
-    fwd = req.headers.get("x-forwarded-for")
-    return fwd.split(",")[0].strip() if fwd else (req.client.host if req.client else "?")
-
-
-def rate_limit(ip: str) -> None:
-    now = time.time()
-    q = _hits[ip]
-    while q and now - q[0] > 600:
-        q.popleft()
-    if len(q) >= PER_IP_LIMIT:
-        raise HTTPException(429, "Slow down a little. Try again in a few minutes.")
+def daily_limit() -> None:
     today = datetime.now(TZ).date()
     if _daily["day"] != today:
         _daily.update(day=today, count=0)
     if _daily["count"] >= DAILY_LIMIT:
         raise HTTPException(429, "The trip assistant has hit today's question limit.")
-    q.append(now)
     _daily["count"] += 1
 
 
@@ -213,8 +196,8 @@ async def health():
 
 
 @app.post("/api/check")
-async def check(x_trip_code: str | None = Header(default=None)):
-    check_code(x_trip_code)
+async def check(x_access_code: str | None = Header(default=None)):
+    check_code(x_access_code)
     return {"ok": True}
 
 
@@ -223,9 +206,9 @@ def sse(obj: dict) -> str:
 
 
 @app.post("/api/chat")
-async def chat(body: ChatIn, request: Request, x_trip_code: str | None = Header(default=None)):
-    check_code(x_trip_code)
-    rate_limit(client_ip(request))
+async def chat(body: ChatIn, x_access_code: str | None = Header(default=None)):
+    check_code(x_access_code)
+    daily_limit()
 
     msgs = [m.model_dump() for m in body.messages][-20:]
     while msgs and msgs[0]["role"] != "user":

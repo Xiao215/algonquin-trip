@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Starts the chat backend on localhost and publishes it with Tailscale Funnel on port 8443 (443 is
-# left alone because another app already uses it). The chat asks for TRIP_CODE from backend/.env.
+# left alone because another app already uses it). The chat asks for ACCESS_CODE from backend/.env.
 # Ctrl+C stops the backend. To unpublish: tailscale funnel --https=8443 off
 set -euo pipefail
 cd "$(dirname "$0")/backend"
@@ -31,7 +31,7 @@ if ! tailscale status >/dev/null 2>&1; then
 fi
 
 tailscale funnel --bg --https=8443 "$PORT" >/dev/null
-echo "Chat backend is public at https://$(tailscale status --json | python3 -c 'import json,sys;print(json.load(sys.stdin)["Self"]["DNSName"].rstrip("."))'):8443 (passcode required)."
+echo "Chat backend is public at https://$(tailscale status --json | python3 -c 'import json,sys;print(json.load(sys.stdin)["Self"]["DNSName"].rstrip("."))'):8443 (access code required)."
 echo "Open the site: https://xiao215.github.io/algonquin-trip/"
 
 exec uv run python server.py
