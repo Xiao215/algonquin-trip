@@ -36,13 +36,13 @@
    "cost": "About $21 per car (exact price shows at checkout)",
    "summary": "Needed to get into Arrowhead on Saturday. Thanksgiving weekend at peak colour sells out, so book right at 7:00 AM.",
    "steps": [
-    "Before 7:00 AM, sign in (or create an account) at [reservations.ontarioparks.ca](https://reservations.ontarioparks.ca).",
-    "Open the **Day Use** tab and keep **Daily Vehicle Permit (DVP)** selected.",
-    "Park: `Arrowhead`. Arrival date: **Sat Oct 10**. Pick the full-day permit.",
-    "On the calendar, a green check means spots are left; a red X means sold out.",
-    "Accept the acknowledgements, then **Checkout**. Name the driver as the occupant (the permit is issued to that person).",
-    "Enter the licence plate. Not sure which car yet? Use `000000` and update it later under **Preregister**.",
-    "Pay and keep the confirmation email."
+    "Before 7:00 AM, sign in at [reservations.ontarioparks.ca](https://reservations.ontarioparks.ca).",
+    "Tab: **Day Use**. Keep **Daily Vehicle Permit (DVP)** selected.",
+    "Park: type `Arrowhead` and pick **Arrowhead** (not Arrow Lake).",
+    "Arrival: **Sat, Oct 10**, then **Search**.",
+    "In the grid, click the **DVP - Full Day** row under **Sat, Oct 10**.",
+    "Accept the acknowledgements, then **Checkout**. Name the driver as the occupant.",
+    "Enter the licence plate (or `000000` and update it later under **Preregister**), pay, and keep the email."
    ],
    "facts": [
     [
@@ -76,28 +76,6 @@
      "https://blog.ontarioparks.ca/reserve-daily-vehicle-permit-advance"
     ]
    ],
-   "select": [
-    [
-     "Tab",
-     "Day Use"
-    ],
-    [
-     "Type",
-     "Daily Vehicle Permit"
-    ],
-    [
-     "Park",
-     "Arrowhead"
-    ],
-    [
-     "Date",
-     "Sat Oct 10"
-    ],
-    [
-     "Permit",
-     "Full day"
-    ]
-   ],
    "key": [
     [
      "Cost",
@@ -112,7 +90,28 @@
      "Only within 2 h"
     ]
    ],
-   "tip": "Be signed in by 6:55. Not sure which car? Enter plate `000000` and fix it later."
+   "tip": "Be signed in by 6:55. Not sure which car? Enter plate `000000` and fix it later.",
+   "site": {
+    "tab": "Day Use",
+    "type": "Daily Vehicle Permit (DVP)",
+    "park": "Arrowhead",
+    "arrival": "Sat, Oct 10",
+    "dates": [
+     "Fri, Oct 9",
+     "Sat, Oct 10",
+     "Sun, Oct 11"
+    ],
+    "pickDate": 1,
+    "rows": [
+     "DVP - Full Day",
+     "DVP 8am - 12pm",
+     "DVP 12pm - 5pm"
+    ],
+    "pickRow": 0,
+    "warn": "Type “Arrowhead” and pick exactly that. The list also shows “Arrow Lake” and “Sioux Narrows”."
+   },
+   "then": "Then: accept the notices → Checkout → name the driver → licence plate (`000000` if unsure, fix later) → pay.",
+   "phone": "705-789-5105"
   },
   {
    "id": "algonquin",
@@ -124,11 +123,11 @@
    "cost": "$21.00 per car (HST included)",
    "summary": "Needed for the Lookout Trail first thing Sunday morning. Driving through on Hwy 60 without stopping doesn't need one, and the Oxtongue Lake paddle is outside the park.",
    "steps": [
-    "At 7:00 AM, same site: **Day Use** tab, **Daily Vehicle Permit (DVP)**.",
-    "Park: `Algonquin Park – Hwy 60 Corridor`. Arrival date: **Sun Oct 11**.",
-    "If it asks for an entry point, pick **West Gate** (km 0). That's where we come in from Huntsville.",
-    "Permit type: `DVP - Hwy 60 (Does not include Booth's Rock Trail)`. Same price as the Booth's Rock option. Booth's Rock isn't in our plan, and its spots are capped this fall, so leave those for people hiking it.",
-    "Enter the licence plate (or `000000` and update later), pay, and keep the confirmation."
+    "At 7:00 AM, same site. Tab: **Day Use**, **Daily Vehicle Permit (DVP)**.",
+    "Park: type `Hwy 60` and pick **Algonquin - Hwy 60 Corridor**.",
+    "Arrival: **Sun, Oct 11**, then **Search**.",
+    "In the grid, click the **DVP - Hwy 60 (Does not include Booth's Rock Trail)** row under **Sun, Oct 11**. Same price as the Booth's Rock row; pick that one only if you want to hike Booth's Rock.",
+    "Accept the acknowledgements, Checkout, licence plate, pay, and keep the email."
    ],
    "facts": [
     [
@@ -162,32 +161,6 @@
      "https://www.algonquinpark.on.ca/visit/general_park_info/fees-day-use.php"
     ]
    ],
-   "select": [
-    [
-     "Tab",
-     "Day Use"
-    ],
-    [
-     "Type",
-     "Daily Vehicle Permit"
-    ],
-    [
-     "Park",
-     "Algonquin Park – Hwy 60 Corridor"
-    ],
-    [
-     "Date",
-     "Sun Oct 11"
-    ],
-    [
-     "Entry",
-     "West Gate"
-    ],
-    [
-     "Permit",
-     "Hwy 60 (does not include Booth's Rock Trail)"
-    ]
-   ],
    "key": [
     [
      "Cost",
@@ -202,7 +175,27 @@
      "Only within 2 h"
     ]
    ],
-   "tip": "Only needed for the Lookout Trail stop. The paddle at Oxtongue Lake is outside the park. Want Booth's Rock Trail too? Pick “Booth's Rock Trail + Hwy 60” instead (same price)."
+   "tip": "Only needed for the Lookout Trail stop. The paddle at Oxtongue Lake is outside the park. Want Booth's Rock Trail too? Pick “Booth's Rock Trail + Hwy 60” instead (same price).",
+   "site": {
+    "tab": "Day Use",
+    "type": "Daily Vehicle Permit (DVP)",
+    "park": "Algonquin - Hwy 60 Corridor",
+    "arrival": "Sun, Oct 11",
+    "dates": [
+     "Sat, Oct 10",
+     "Sun, Oct 11",
+     "Mon, Oct 12"
+    ],
+    "pickDate": 1,
+    "rows": [
+     "DVP - Hwy 60 (Does not include Booth's Rock Trail)",
+     "DVP - Booth's Rock Trail + Hwy 60"
+    ],
+    "pickRow": 0,
+    "warn": "There are several “Algonquin - …” entries (Tim River, Kiosk, Kingscote…). Pick “Algonquin - Hwy 60 Corridor”."
+   },
+   "then": "Then: accept the notices → Checkout → name the driver → licence plate (`000000` if unsure, fix later) → pay.",
+   "phone": "705-633-5572"
   },
   {
    "id": "canoe",
@@ -790,7 +783,8 @@
      "start": "08:05",
      "end": "09:55",
      "label": "Finch → High Falls",
-     "note": "Hwy 400 to Barrie, then Hwy 11 north. About 1 h 50 m without holiday traffic."
+     "note": "Hwy 400 to Barrie, then Hwy 11 north. About 1 h 50 m without holiday traffic.",
+     "geom": "axejGlvucNbBbJtA|JvAlKtAdKtAzJvArKrBfOtBpO~AhLpBdOpAnJvAjK~@dLz@rKpA`LrAjJnAvKzAvLjArJ`BbMtBdPpAnJnE|\\rAlJtAbKzAbMzAdJ|AdLlA|KjAhJpAbJ|AtLrBtLxAvKjApLvAfKjCdIpDdUjBdNfD`VnCdSbEjZxAhL~AlL|@vKp@tJfB`NtApJ|ApK|A~Lg@rJyHxEgKvBcLbCmW|DqXvD_OdC{MpBuNvBeL~AoJjAkH|@kL`Bgo@hKaMlB_XpDiNvBwS~CqSzCeNnBeSzCyKtAgHd@sPfAmUdAcR~@iTv@mSz@_J`@{Nt@u\\xA{Ip@qIjAcQ`C{PbCaQpCqIjAqJtAeOvBs[fFqJtA_OpBkIhAg`@hG}RrCqSzCqHfAiOzBaHdAmLdBoH`AkNnB{LjBiMlBgOtBiYhEmK`BeT~C{JtA_TzCgOvB_HlAcI`AgO|BiHlAmMnBkNnBw\\bFkSzC{^rFab@lGaWvDmG`AeJrAwPhCg\\~Eq^pFo]`FoWrD_c@tGs\\bFeZnEwJxAiGdAib@hJ{ZfHiGxAsKpC{J~BsPzD{KrByHrAgKhBoOtBaQzCaWnEuNbCoHrA}HdBgGrAyHbCqIjEkGjEiI|GcKtIyJbImJ|HwLpKyIrHqGfFqNpLiJtHcJvHoNhLsHbG{IpHoFnE{F|DeIzDsHxBiOlCkHjAmKdBaNtBoLfBsPjCcQlCcHdAoItA{HnAaObC_NzBqPzBkLtBmr@hK_LzAaJlAuc@pHeNxBqMrBcS~Ccd@jHm]nF}]tFqG|@cL|@_L^{Ur@iUp@eHRaOd@yVt@oXx@qY|@iJVwN\\{I\\yHr@}IrA{HdBkGhBeM|EaZxMyObHoGpC{RxI}JjEmPnHgLfF{GvCuJpDaJbC}IlBmMtBmTxDkXvE_ZbF}T|Dqm@`Kic@bIeUtDaZhFgT|DgHjAqOrC}KjBuNtB_Y`F}UfEkZhFwLpBwHrA}KvBmOlCkHlAeSlDwIlAiIxA{NhCuRnDuSbDaLv@wj@qA}Xw@eWi@aWk@uZk@qLr@sLjBo[rEiWdEcIjAsQrC{U`E_]fFeJ|BsGnCcH`E_MbL{IpImKtMwKtNcIpJ_H|IoLfNuF~GqLhNiFpE}G|CwGz@qGY}HuBq_@{OiUiKgGgDcJqGmFwDqFuDyW_RwLcJcGeF{EeF_IyK{OoV{NeUsFqLkCeJyB}LwF}[}BwMcCuNkFkZeF_ZaCqK_DcIuFiIgFmE_GcDkJeFuHeEmN}HeK}F{GqDuGoFwE}GoEsKyHgR_CcJwEy`@kCqMiQmk@eDsKkCoIoEgQwCcLmCyIkE}M__@wqAkEsMaMe_@{IsWwJmZeV}v@iHaUcJoX_EsLoDiKiPue@sL{]{CoK}A_KsAeNcCmKwS}o@yCgJmHiUqT{q@gEiM}M{X}b@ux@qKkSoLuTuFgOwG}SeF}O}IwXiR_m@uCsIaDuJ}EuJeGmGoIyEes@gW}`@_Oy[eLcIeDwIiEuHuDkj@iXkm@}Ys\\{M}RmI}FcC}IqDaKeEwGmCuG_BeIM{Hf@iSrA}]dCyh@~EgPpAuMdAaKr@cJl@wWrBiOdAqHBaHi@qPeCmK}AwX}DgMoB}SiDwHwAkHgCuGkD}J{HyJ{HkS{PyS{Pml@_f@yGwFeNcLkKyI}J{HmIoEoHaB_HmA}RoDmYsFeL{BqH}BoPkGoJkDuPcEsImByMgE}GoCmGoDwIyEaMqEyLgEmWmJsPiGcHcCmG{BgNwFcGgCuN_GsGuD{JcIuHeJ}HaMgFsHeFeG{HuGgHuEqIqFwH_F{GqE{FmDgHwE}QuLkG_EsM_K_IeHcGoHeHuLeFaJyLwTcKuQkVcd@mEiIiL}ToGoLeEmH_FkGyFwEmQ{JqHgEeJeFsGqD}I{DgO{Fkb@oOaJoCcIg@yXrBcMj@eKRoINkJNiI?oH}@mQgD_W{Eo]iGyHsAmLa@qI]mGcBmHoCaGoBo\\sGmIuA_HkAgLaFiIaEmGkBaJe@yHDqTmCuaAqOwMgBeIiAoY_GcI{AaIqBmKsBuJaBmHyAcVoEcJq@kGjAeG|DqGzJqExIgEhHsIjGyNdH_NlGmInDiIhD}GxDcJxIaF`HyDbHy\\rr@{ErKsHzMyH~JgP|RuMpTsIdO}T`a@eEnGiF`FqIhEkJtCgHrBoGf@cG{BiEwGmCaQcBaNuBuPaCqToCcN_DeKgFmKyEyFaGgFoGoDuH_C{JcAmIVsi@tEaS`B}IHcJmAcHcCqR_LgOiJy^aToKmGyd@qXyj@s\\iN_Hay@a`@ua@_ScJiEkU{Kyd@wTuHmDuXwMef@gUam@eYcIiDq]uKki@oOaH{AsIu@gHAu[|CoHPaIe@mIiBuHcDwM}IkHgF_GcDuGmBwI_A}IPkHjAiJzDmIfG}IvGaJ~GgJhHkJhHmGpDyGrBwH~@{SM}KOkKQsKIuXe@uIMqII}GPaIt@mHsBoBdKlClLuG~BoC|C"
     },
     {
      "t": "stop",
@@ -823,7 +817,8 @@
      ],
      "start": "10:15",
      "end": "10:35",
-     "label": "High Falls → Huntsville"
+     "label": "High Falls → Huntsville",
+     "geom": "sferG|r_cNvE{I@iP{FfMqQ|Jav@db@aTnL_GhCqHpAs_@Zkt@^_m@RgVToICoIDu}A|@il@Z{r@^mm@\\eQZmHJkh@jAgP^gg@hCaH`@aH`@_r@bEaH\\cHH_KSaNs@cO_AyPeAeSoAiJuAmImCyFoCuMgJig@q_@iLeIgHuDyJuEyGcCsLaDwJkBsOkBgSgCwZuD{OmBmH_BeHiC{JyF}IyH{KsKsf@ae@sFeF_P_Ms}@ct@sHgHoVwXeY}[wEiG}EeI_Tsd@uFmKaK_M{JgHkLuEuIwBsGoFiFkEaO_MwFaE_GaEgF{F{HuMy@_Kz@uNcDeOeEeIoH}FoJ_P_BmNcAcK_C{Ic@iB"
     },
     {
      "t": "stop",
@@ -860,7 +855,8 @@
      "start": "10:50",
      "end": "11:05",
      "label": "Huntsville → Big Bend Lookout",
-     "note": "Check in at the Arrowhead gatehouse, which is now at the Visitor Centre, then drive in to the Big Bend lot."
+     "note": "Check in at the Arrowhead gatehouse, which is now at the Visitor Centre, then drive in to the Big Bend lot.",
+     "geom": "k~ssGf{nbN{B}K{BwIoGvCmFtEe@rMgBjKiDhJoBlJJ`LtBzKvAnK~@bKfAzKJdK|@pKkG`B_JoC{GmB{GuBeMwDiGkBiT{GcS_GuH}C{GkGiIkMaIsOsE_IwGsGwFwCmGmAkPsBoM}AcYyD_MmC_KyB{FoJ_GjFaD`KkE|IaGpHwF`EeHtBqHhAiH_DwG{CkA_KqF{HoFqD_FgGqFeF}GtAgAyJt@}KnCyIgEiN~A{JpG}IbCsIzCoI`AsLyAkPyB_L"
     },
     {
      "t": "stop",
@@ -893,7 +889,8 @@
      ],
      "start": "11:30",
      "end": "11:35",
-     "label": "Big Bend → Stubb's Falls"
+     "label": "Big Bend → Stubb's Falls",
+     "geom": "u``tGfgjbNxB~KnA|LI~J\\~KdG|CxFrEbFlFbE`H|CdJbBhJ@F"
     },
     {
      "t": "stop",
@@ -926,7 +923,8 @@
      ],
      "start": "12:20",
      "end": "12:27",
-     "label": "Stubb's Falls → Arrowhead Lake"
+     "label": "Stubb's Falls → Arrowhead Lake",
+     "geom": "kt~sG~mmbNeBqJ}CeJcEaHcFmFyFsEeG}CyIxJmErIRcD"
     },
     {
      "t": "stop",
@@ -982,7 +980,8 @@
      ],
      "start": "15:00",
      "end": "15:15",
-     "label": "Arrowhead → Huntsville"
+     "label": "Arrowhead → Huntsville",
+     "geom": "kj`tGnllbNgExLlC|Ld@zJkDfJcBlKhGjC~GPlEbItGfEzFzGdAtJfG`DbG~F|KM`HuAvHqF`GqHjE}I`DaK~FkFhDlJrDhKrF~GjF_FhJqAlUbDdNjBhLvAbInArHvDvF`GzOtYhErHxF|GrFrDxGbCpQpFvVtHdWxHbKtEdDfIjH_JtCaKNsKsA{M_AcKwAoKuB{KKaLnBmJhDiJfBkKXwLxFqF|FcElCbKxBrK@H"
     },
     {
      "t": "stop",
@@ -1059,7 +1058,7 @@
    "title": "Sunday, October 11",
    "sub": "Morning paddle to Ragged Falls, Algonquin in the afternoon, dinner in Bracebridge",
    "min": "08:30",
-   "max": "22:00",
+   "max": "22:15",
    "def": "10:30",
    "segs": [
     {
@@ -1086,7 +1085,8 @@
      "start": "08:45",
      "end": "09:20",
      "label": "Huntsville → Oxtongue Lake",
-     "note": "Hwy 60 east past Dwight. The Algonquin Outfitters store is right on the highway at Oxtongue Lake."
+     "note": "Hwy 60 east past Dwight. The Algonquin Outfitters store is right on the highway at Oxtongue Lake.",
+     "geom": "k~ssGf{nbN{B}K{BwIwFgFyFwFsF_JaEkHmFmEcI}GkEuIgBiMiBkQgD{[aBgOsAmNoAwLkBaMgEaW}AeLFcKtAeMd@{MoByL{C{H_CcKsAsSm@_Lg@iLyBgLuGkKgK{NaJ}G}FaDcJuK}O}ZsFiGmG_CaSyFkGaEuScb@oCuSg@cNvCeT`CwNrByOcA}RgBqSKiQxBgJzKiNfMqN`GcH`EmHlHqPdLgVbG}MjCuKIqMkDiRkCwNgC}MaCoMoBgKeAiL@{Nj@aKpCqPBko@CqP^uO|DwSdIgZdG}J`IqE|Ge@jOnC|GEpGkDjGcIdImKvHsKnCkI`@oMoEqk@FaKhCgKhJwIbOqHfKiE|EsGxA}Xv@eKpCgN~FsMbH{MfIeNzDeIrBeLbDqh@nAqSTcNcB{McJek@cC_PiCcJsDgJcLuU{M_YqGqKaLqLgEcIuCqLwDaHuFoGeU}VmGiHwEkFuEiFkLiNmQqTyEeFwF{CqGy@gMh@kGw@yv@oYmJy@cd@nBiHZiH]wGaJsIgCeAN"
     },
     {
      "t": "stop",
@@ -1178,7 +1178,8 @@
      "start": "13:45",
      "end": "14:35",
      "label": "Oxtongue Lake → Lookout Trail",
-     "note": "In through Algonquin's West Gate at km 0. Your permit is tied to your plate, so drive straight through. Lookout Trail is at km 39.7."
+     "note": "In through Algonquin's West Gate at km 0. Your permit is tied to your plate, so drive straight through. Lookout Trail is at km 39.7.",
+     "geom": "yp~sGf_v`N|I_A}@yO^eKNiLiMoXeEuIoEiOiFgRgC{IuEyIyM}OmLqQuPiZqGgJoFkGsHuIaIcKeO_^{H}QsDuQsB{LoDeImL_UcOmZcFeKoL}UaEsHoR}[{FeKiNk]sCkIkBeJgBqNyBcJqDuHsL{OuJ{QkEkGaH_Ge`@}U_I}DsI_CmGiDiH}EsEwFuOqKaKkGuKqGiGaI_GuOev@{lAoQqYyCqIaK}f@kTi|@_DgJgHuKav@{eA_HePyE_IsH_MaJoN{GyFaK{DqLqEaMcH{I}HoIoKeEoGoCuJo@_YuA_N}CoIaG{HsI_K}M}OwFyGsF_JqEwJqFiHkG_CsIYaHsB{EsFoEeJgE}GeIcFuFcDkEyGwCwIaFwFsJ{CuG}AiO_EiXkIwGeD{QoUqDqJmBkZoAyRs@aNuAyk@s@q_@b@qLfFou@CgLwAiKcU{q@cHqS_EyLgGqQwDcL}BaJFwKoAiKwFaHwEcIkBcNX{LlGk`@rD}Tr@cL_De_AOiMIsOiAmWoBqUiI_i@yE{QkIgJeHaS}`@gvAaCwOxG_w@`E_c@}@_MyEoN_Y}w@iPi\\oJuNaP}R{EcHsD{SuAqPmAcLkB_S[gKSi_@m@sMyCeMuOal@mEiPcCqIkEyP_@_KfCwMbMwZlCmJz@mU~@uLhFaYtBsLbF_WfCiOlCeQbE{Ila@}c@nHyI|CoIvA_M_DsSmGiSwKe^{BuIaI{_@eCyLsMoo@wAwMa@uA"
     },
     {
      "t": "stop",
@@ -1216,7 +1217,8 @@
      ],
      "start": "15:40",
      "end": "15:45",
-     "label": "Lookout Trail → Spruce Bog"
+     "label": "Lookout Trail → Spruce Bog",
+     "geom": "}ceuGhxp}MmBi\\qAyRkAsOo@oNUqRsBuMsNaUcIwZiCkNoAmOmCyH"
     },
     {
      "t": "stop",
@@ -1254,7 +1256,8 @@
      ],
      "start": "16:35",
      "end": "16:40",
-     "label": "Spruce Bog → Visitor Centre"
+     "label": "Spruce Bog → Visitor Centre",
+     "geom": "cwfuGjij}MUmZuAwJh@iL|CqKxDmIfFqF"
     },
     {
      "t": "stop",
@@ -1292,15 +1295,16 @@
       "bbfalls"
      ],
      "start": "17:00",
-     "end": "18:25",
+     "end": "18:40",
      "label": "Visitor Centre → Bracebridge",
-     "note": "Back out the West Gate and down Hwy 11. Sunset is about 6:36, so watch for moose on Hwy 60."
+     "note": "Back out the West Gate and down Hwy 11. Sunset is about 6:36, so watch for moose on Hwy 60.",
+     "geom": "egfuGhvg}MrDwHoGhBaBhJmCrI{F`H~@|Js@nKpD`e@rAlQ`CzNjEjTrQr[zC|Lb@lVn@nNjArOpAxRxAbSt@zJvAvMrMno@dCxLnE`UlFnThHrUzJz[hC|KD~L_CtKiFjIad@xf@cFnHeErUgChOsDlReDdQ_DjPgBdL{@bVcAnK}KbXmFdPa@xNrErSpCpJlEhPzKta@fFbSxA|MPv[DdKzBfYjApK~ArRbAvJxDpKlTlXtJzNhPh\\~X|w@xEnN|@~LyCh[mHdw@HzMfb@~zApE|OxM~QxEzQhI~h@nAzKpAdU`@p[NhMvCnw@?lK_Fh]aE`WyArJFlNrBpLzHrJjD|HHvLx@`KdGvQfGpQ~DxLbErLxV`u@jBzJXlPgFnu@c@pL^lTlAbl@j@zNrBx\\fA~TtB`KtObUhFzE~^|LdG|AfKlCtLdDvFfEpEnLjExGtFbDxGvDrFhInEdJzErF`HrBjHRvGnBbFxFbEzIlEpIjGtH|IjKtIbKtJjLhExIjBpKXjTz@vK~HpPpItKzI|HnJvFbO|F`KzDzGxF`JnN|FfJnEhH|ElMbz@`lAbFhHtDvIfSfx@rMzn@xCpIxPnXbu@zjAvHvRhG`ItKpG`KjGdKlG`GhGhGxFbGpDhKbDtKfFd`@|U`H~FjEjGtJzQrLzOpDtHxBbJfBpNjBdJrCjIhNj]xD~G`Th^pElIrHjO~IvQbOlZlL~TnDdIrBzL|AjKpKfXdK`WjGtKhN`PnFjGpGfJtPhZvFpJnS|VtExIfCzIjDdMtEhP|FvMrIjO`C`Jo@dM\\bRnAxKfEdHpG`BpKc@bd@oBzGVvs@~WlGrBzOOtGX`GxBhHbHdOnRrNjPtEhFvEjFlGhHdU|VtFnGvD`HtCpLfEbIpIvI~EzG|Qn_@bJzRrF`MhCbJlBlMxJvm@bBzMUbNoApScDph@sBdL{DdIgIdNcHzM_GrMqCfNw@dKo@dN{@pKcOxJsQzIwGdFsDrIo@fPbEng@UpQoCjIwHrKeIlKkGbIqGjD}GDkJqBqG[kH|A_H`GmNzb@}CpN{@|J?nZVxe@mDbZk@`KAzNdAhLnBfKbBdJdDfQjCvNjDhRHpMkCtK{D|ImNfZmHpPaElHaGbHgMpNaFvEmFlK}AfMjC~^p@zJEvL}EzY}BzMLlTtA|NdQp`@rFjHbXxIlG~BfFvFhPn[jGtItI`FbG`EfHzIzJxNjD`JlA|Rl@~Kl@lLlA~JfCnItDnLb@dMeA`LaAlKb@rLzDtUtCnQ~AbNdB`R`BfOxBxSpC`Xx@|KvArJ~GnD`GpEnFxFhEvHlLtNvFfFzBvIxBrKnCtKrAjKv@hK|GhOnLhLdEdIxDhJ_AfMA~LfI|PdG|G~F`EvF`E~I`GzD`Ha@tM|MDfH|@~H`C~HjEjFjEdFtFzG|KtJ`TnGhNjFlJbGtIf[j^nStUhFpF~KrJ`v@hm@fN|KhJfIbu@js@pFpEbGvD~JdEdH`BjJnA`b@fF|Gt@xV|CdHdAfHxA|P`F|HtDtK~FrK|H`g@~^hGnExFtDjIrDxI~BxH`A`a@bCvJl@`UrAvMTxK]`m@qDdSkAh[qBjH]|KYpUg@~Ui@bHIbN_@vJQz^Qz[Q`e@S`f@Wh}BgA`QQf_CiApGu@dI{C`YsOrn@k]xQiKzMeHjKyFlHaCjHg@dJNf]d@rQP~JTrQVvIF|Ha@lHwAfIsDvYoThHyD`G{B`H}AxFhGdA|OxDpHhGvAlHfB`KdCzM`DbIrBhNhDzGbB|AfKkE~KmD~LuGo@mApB"
     },
     {
      "t": "stop",
      "place": "bbfalls",
-     "start": "18:25",
-     "end": "19:30",
+     "start": "18:40",
+     "end": "19:40",
      "kind": "food",
      "name": "Dinner in Bracebridge",
      "verb": "Dinner in Bracebridge",
@@ -1318,16 +1322,17 @@
       "barrie",
       "finch"
      ],
-     "start": "19:30",
-     "end": "21:15",
+     "start": "19:40",
+     "end": "21:30",
      "label": "Bracebridge → Finch",
-     "note": "Hwy 11 and the 400 south. Holiday traffic can add 30–60 minutes."
+     "note": "Hwy 11 and the 400 south. Holiday traffic can add 30–60 minutes.",
+     "geom": "m{{qGls`cNrGUhG_DjFkFhJoFzFoCvGFfJj@nXiCzOkBtGu@xHmBzHmB`UuFrGeBpIsCzGf@~RpF`\\xOdStJ`VdLvW~LfIxDtKlFzTdKxJ`FfWxLteBty@fi@b[fq@la@zG~DjObJlJpFdNzIxW|N|GbCtInAlOe@`WsB~a@oDfNF`JbBzKtFxJtJfGtKxDvK|BrLpG`i@~CzW~BdMfFfGfHHfZgJ`HmDdHoGfLqRlEsHzEuItGyLpJsP~EsH~EaGbFeG~FaHhFeIbEiIjEiJvFoLpKaTrJ}ShEuHpHeJjIqGvLwFnKsEpImDdUgLrHcG`KcRjEkHxF{EbGiBpGAbKjBnRnDlWxE~LtCxHxAbIfBpJhBdVtD`NjBpR`DbInAl]jFdOzBfIRbHClIdA|JnEjKjFdHhB`MvBvX|ElIdCfKxDlHvApNd@bO~Atb@xHxOzCdMzBtH|AzHb@|HKxIIrVg@lIe@dK{@vJu@vJb@hJvC|`@`OfHhCpJjD~J`FpKhGbKtF|IxEhI`FhHjHhEzGdFtJtNrXzF~KrF|JzKbSjKfRpOfYzEpIvG~KpGdInR`PbMpIvKnH|NjJhJ`GlHzE|H`FdKxGzGhFtFtFnGvIhHfLhE`GfJrJxJvGfGnCzGrCnL~ElGdClK`EtGzB`GvBjGzBhPbG~RhHdGvBpG|BrMxH`HzCdJ`DjQlExJ`CbPlFtPpGfHtB|UxEnJfBpRjDnKpBlGlAzH|CfHfF`MdK|N~LxKlJ|_@n[zJ`IbRnOnTtQ|TrQxGxDpIfDtHbB~KjBfRzCjXxD`LlBvT|C~Ln@pTiA~Lu@dIy@tKu@xIs@jMgAnL{@ji@iFpo@yE~Iw@fHUdHn@xGrBdPvGzGlCf]xN|XxKxq@x\\nc@~SvNhHrI~DhIpDp[bLzYnK`ZvKn_@~MhItEzFjG`FrJ|ClJ`D`KlNjc@xGrSpI`X|IbYvFnOhElIdPbZnJrQ~Ylj@`IpO~EbMxXd{@lEpNrDfL`FpObMj`@rDxNvAjN|AfKdD~KjLp]nUdq@bDnJtHjUvJtZfClIjCrIvCjJbDdKvCjJzJzZfJdX`KtZzFpQ~R|q@zF`TlCjJlCrIdEzMnFdTfM|a@dP`i@lClMtB`RxAbMdCjKnGzOlEbLdFjIxFjFtF`DpMhHdKfF`GhDjGhDpLpG|FhEzE~FtEzJdClJvCbQbC~NlC|QhCdQ`CzMvH``@zC~NjDlK|Sf]|OhVrE`HnM`NvJhHrTjPxVzRjJtG|VdLjRlHdRtHtGdCxGt@jIa@lHcC`HoFvJyLhGqHbMeO|L_OvG{HdIiIrEeG~EcHbHcJ`GeG~FcEvGqDbIuCx_@}GlOeCdMiBdOuBhH{ApQkCp\\eF|VqDrJMpVr@bWd@bWn@`Yr@~Vd@|RTnH_@bMeBvLiBhS}B|NiCzJeB`IqAjHqAjRmDzHiBxKeCrUeEx]_GvUeE`Y}EhHoAhR}CtX{E~TiErY}EhYgF~UmE~GmArSgDzX{E~T{D`ZcFtKmBvKmBpTwDfMwBhLaCnGiBpHkCfMwFpIuDrNcG~IcEjKwEjIuDpK_FpKuEpRoIlImDtJmDlKuCnI}AdIaA~N{@dLa@vL_@nY{@rXy@zVw@dXy@t^gAl[aApJ{@tVuDtN}Bj]mFf\\cFbZ}EbRoCpJaB`]_FpPiCbLgBtb@uGnLmB`[{ErRyChJ{AtN{BhJwArOgC~HkA|GeAf^uF|N}BzOaCjHkAdIaCfJkE`NcKzF{EbIuG~G{FxJaIbI{GbJqHjGkFbHyF|IgHnIsGnI{GtHiG~N{LdLkJ|JeIbMaHvHeCpHwArNmCjJsA~QcDrHsArHyArNmC~HuA`K_BhLaBtPiDhN_D`WaGtS}EtQgEvNiDxTcEjPuCnGeAxRaD|QqCvTeDdMkBhW{DxJwAfWyDdYcErIqApQkCpIoApQkCpd@}Gz\\kFjWqDb[yE~JyAxPkChMeBpUaD~SaDjJiAnTiDbLmBzR}Ch`@}Fx[{ExZsEdMmBjIoA|\\aFpTiDlLeBfLcBvb@eGhMmBzPiCjTaDxHkAdXcEjg@mH`XaEtKyAtHgAjK}AfIg@xQu@zOq@jSeAlPm@lSaA~Me@vO}@hLc@`UeArHi@hKsAzJ{AlHkA~OcCtQuCj^gFzRsC|HsAxPiCnMgB~ViDfHw@pJ{Ad^eGfP}BtG_AnLgB~ZkEdX_EtMkBfKo@tGd@vF~DtBaK}AuLsBcN}AgK}AsKsAkJoA}Lm@qJ{BkQkBwMqAsJ_BaMuAiJqAqJsBgOoBwNyCeTiCcKiBgJgBcLeBkLaBkLmAaKuAoKwAcKcBeMuAeJqAeJeAiJaBaKsAwJiEuZkAoJgC{RoAmJqAyJkBcOoAkKyAsLgBeMm@eK_AsKiBuNiBwMsAyJqAqJwAmKcCmQuAaKaB{LuA{J_BqL}AiLqAmJq@cC"
     },
     {
      "t": "stop",
      "place": "finch",
-     "start": "21:15",
-     "end": "21:20",
+     "start": "21:30",
+     "end": "21:35",
      "kind": "meet",
      "name": "Drop off at Finch",
      "verb": "Dropping your friend at Finch",
@@ -1340,19 +1345,20 @@
       "finch",
       "markham"
      ],
-     "start": "21:20",
-     "end": "21:45",
-     "label": "Finch → Markham"
+     "start": "21:35",
+     "end": "22:00",
+     "label": "Finch → Markham",
+     "geom": "axejGlvucNiAsLyAwKuAeKoAgJiBsNoBiOmBeNgB_NeBoM_BgKgBeKeDsVuBsOwBcPuCoTqAcKqBwNwAsKuAiMCkKoAeLwAoL}AaLgBiMyAaK_AaK}A_KyAiK{AcJcAqJsAaKiAuJCgL{CzI{OxC{OvC_PrBaVbDaIxAaH~D_GlIwDbLeGjS_DpIeG|I}GvF{JrDkInCiIhCoH`CeMdEaOlE}IpCiK`DmJjCoI|B}UhG_K~AsGTkGm@qI{@yGaNuAmKaBgMyA}JkAoJwAgLgBuMqA}JkBoN{BoQeCkPiBqM}A}J}GzBqCwJq@o@"
     },
     {
      "t": "stop",
      "place": "markham",
-     "start": "21:45",
-     "end": "21:45",
+     "start": "22:00",
+     "end": "22:00",
      "kind": "stay",
      "name": "Home",
      "verb": "Home in Markham",
-     "body": "Home around 9:45 PM, or later if the 400 is slow.",
+     "body": "Home around 10 PM, or later if the 400 is slow.",
      "tips": []
     }
    ]

@@ -30,21 +30,22 @@ TRIP_FILE = DOCS / "trip.json"
 MODEL = os.getenv("MODEL", "claude-opus-5-5")
 EFFORT = os.getenv("EFFORT", "low")
 BASE_URL = os.getenv("ANTHROPIC_BASE_URL", "")
-# A local Anthropic-compatible server (e.g. claude-api on :8787) is for the organizer's own use only;
-# start.sh won't publish the backend through Funnel in that mode.
+# A local Anthropic-compatible server (e.g. claude-api on :8787) answers on your own Pro/Max plan.
 LOCAL_AI = bool(re.match(r"https?://(localhost|127\.0\.0\.1)(:|/|$)", BASE_URL))
 FALLBACKS = os.getenv("FALLBACKS", "off" if LOCAL_AI else "default")  # "off" disables server-side refusal fallback
+# The backend is public through Funnel, so the passcode is always required.
+REQUIRE_CODE = True
 TRIP_CODE = os.getenv("TRIP_CODE", "")
+if not TRIP_CODE or TRIP_CODE == "change-me":
+    raise SystemExit("Set TRIP_CODE in backend/.env (the passcode you type into the chat).")
 ALLOWED_ORIGINS = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "").split(",") if o.strip()]
 PER_IP_LIMIT = int(os.getenv("PER_IP_PER_10MIN", "20"))
 DAILY_LIMIT = int(os.getenv("DAILY_LIMIT", "300"))
 TZ = ZoneInfo("America/Toronto")
 
-if not TRIP_CODE:
-    raise SystemExit("Set TRIP_CODE in backend/.env (the passcode your friends type into the chat).")
 
 if LOCAL_AI:
-    print(f"Using the local AI server at {BASE_URL} (personal use only; not published).", flush=True)
+    print(f"Using the local AI server at {BASE_URL} (personal use; passcode required).", flush=True)
 elif not os.getenv("ANTHROPIC_API_KEY"):
     print("Warning: ANTHROPIC_API_KEY is not set in backend/.env; chat requests will fail.", flush=True)
 client = anthropic.AsyncAnthropic(api_key=os.getenv("ANTHROPIC_API_KEY") or ("unused" if LOCAL_AI else None))
@@ -165,6 +166,8 @@ _daily = {"day": None, "count": 0}
 
 
 def check_code(code: str | None) -> None:
+    if not REQUIRE_CODE:
+        return
     if not code or not hmac.compare_digest(code.strip().encode(), TRIP_CODE.encode()):
         raise HTTPException(401, "Wrong trip code.")
 
@@ -206,7 +209,7 @@ class ChatIn(BaseModel):
 
 @app.get("/api/health")
 async def health():
-    return {"ok": True, "model": MODEL, "local": LOCAL_AI}
+    return {"ok": True, "model": MODEL, "local": LOCAL_AI, "code": REQUIRE_CODE}
 
 
 @app.post("/api/check")

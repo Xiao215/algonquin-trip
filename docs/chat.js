@@ -1,27 +1,27 @@
 (function(){
 "use strict";
-/* Trip assistant: a floating rounded box. Collapsed it's just the input; it opens into a chat
-   card that can be dragged by its header (double-click the header to snap it back) or
-   minimized (Esc). Ctrl/⌘+K opens it from anywhere.
-   History lives in this browser only; each question sends the recent conversation to the backend,
-   which streams the answer back as server-sent events. */
+/* Trip assistant as a terminal-style command bar (think Claude Code): click or press Ctrl/⌘+K,
+   type, Enter. The transcript opens above the prompt; Esc hides it (or stops an answer in progress).
+   Type /clear to start over. History lives in this browser only; each question sends the recent
+   conversation to the backend, which streams the answer back as server-sent events. */
 // An empty apiBase means "same server as this page" (the backend serves the site too).
 var API=((window.TRIP_CONFIG||{}).apiBase||"").replace(/\/$/,"");
 var override=new URLSearchParams(location.search).get("api");
 if(override&&/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(override))API=override;
 
-var KEY="alg-chat-v1",POS="alg-chat-pos",HISTORY=20;
-var SUGGEST=["What's the forecast for the weekend?","What time do we leave Huntsville on Sunday?","What should I bring for the canoe?","Where should we eat dinner in Huntsville?"];
+var KEY="alg-chat-v1",HISTORY=20;
+var SUGGEST=["What's the forecast for the weekend?","What time do we leave Huntsville on Sunday?","What should I bring for the canoe?","Where should we eat dinner in Bracebridge?"];
+var SPIN=["·","✢","✳","✶","✻","✽","✻","✶","✳","✢"];
+
 function load(k){try{return JSON.parse(localStorage.getItem(k));}catch(e){return null;}}
 function keep(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
 var S=load(KEY)||{};S.msgs=S.msgs||[];
-function save(){keep(KEY,{name:S.name,code:S.code,msgs:S.msgs.slice(-60)});}
+function save(){keep(KEY,{code:S.code,msgs:S.msgs.slice(-60)});}
 
 var $=function(id){return document.getElementById(id);};
-var chat=$("chat"),card=chat.querySelector(".chat-card"),head=$("chatHead"),log=$("chatLog"),form=$("chatForm"),text=$("chatText"),send=$("chatSend"),
-    join=$("chatJoin"),sub=$("chatSub");
-var busy=false,checked=false,pending=null,ctrl=null;
-var wide=window.matchMedia?matchMedia("(min-width: 901px)"):{matches:true};
+var chat=$("chat"),log=$("chatLog"),form=$("chatForm"),text=$("chatText"),join=$("chatJoin"),sub=$("chatSub");
+var busy=false,checked=false,needCode=false,pending=null,ctrl=null;
+if(!/Mac|iPhone|iPad/.test(navigator.platform||navigator.userAgent))$("chatKbd").textContent="Ctrl K";
 
 /* ---------- tiny markdown: paragraphs, lists, headings, bold, italics, code, links ---------- */
 function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
@@ -49,84 +49,57 @@ function md(src){
 }
 function clock(ts){return ts?new Date(ts).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"}):"";}
 
-/* ---------- open / close / expand ---------- */
+/* ---------- open / hide ---------- */
 function isOpen(){return chat.dataset.open==="true";}
-function openChat(){if(isOpen())return;chat.dataset.open="true";render();clampPos();if(!checked)health();
-  setTimeout(function(){(S.code?text:$("joinName")).focus();},0);}
-function closeChat(){chat.dataset.open="false";text.blur();clampPos();}
+function openChat(){if(isOpen())return;chat.dataset.open="true";render();if(!checked)health();}
+function closeChat(){chat.dataset.open="false";text.blur();}
 text.addEventListener("focus",openChat);
-text.addEventListener("click",openChat);
-$("chatMin").addEventListener("click",closeChat);
-chat.addEventListener("keydown",function(e){if(e.key==="Escape"&&isOpen()){e.preventDefault();if(busy&&ctrl)ctrl.abort();else closeChat();}});
-document.addEventListener("keydown",function(e){if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();openChat();text.focus();}});
-$("chatNew").addEventListener("click",function(){if(busy)return;S.msgs=[];save();render();text.focus();});
+document.addEventListener("keydown",function(e){
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();openChat();text.focus();}
+  else if(e.key==="Escape"&&isOpen()){e.preventDefault();if(busy&&ctrl)ctrl.abort();else closeChat();}
+});
+// clicking anywhere else on the page tucks the transcript away
+document.addEventListener("pointerdown",function(e){if(isOpen()&&!chat.contains(e.target)&&!e.target.closest(".ask"))closeChat();});
 
-/* ---------- drag by the header (desktop) ---------- */
-var drag=null;
-function place(x,y){var r=card.getBoundingClientRect(),m=8;
-  x=Math.max(m,Math.min(innerWidth-r.width-m,x));y=Math.max(m,Math.min(innerHeight-r.height-m,y));
-  chat.classList.add("moved");chat.style.left=x+"px";chat.style.top=y+"px";return [x,y];}
-function clampPos(){if(!chat.classList.contains("moved"))return;if(!wide.matches){unplace();return;}
-  requestAnimationFrame(function(){var r=card.getBoundingClientRect();place(r.left,r.top);});}
-function unplace(){chat.classList.remove("moved");chat.style.left="";chat.style.top="";}
-head.addEventListener("pointerdown",function(e){
-  if(!wide.matches||e.button!==0||e.target.closest("button"))return;
-  var r=card.getBoundingClientRect();drag={dx:e.clientX-r.left,dy:e.clientY-r.top,id:e.pointerId};
-  try{head.setPointerCapture(e.pointerId);}catch(_){}head.classList.add("dragging");});
-head.addEventListener("pointermove",function(e){if(!drag||e.pointerId!==drag.id)return;place(e.clientX-drag.dx,e.clientY-drag.dy);});
-function endDrag(){if(!drag)return;drag=null;head.classList.remove("dragging");
-  if(chat.classList.contains("moved"))keep(POS,[parseFloat(chat.style.left),parseFloat(chat.style.top)]);}
-head.addEventListener("pointerup",endDrag);head.addEventListener("pointercancel",endDrag);
-head.addEventListener("dblclick",function(e){if(e.target.closest("button"))return;unplace();keep(POS,null);});
-window.addEventListener("resize",clampPos);
-(function(){var p=load(POS);if(p&&wide.matches){chat.classList.add("moved");chat.style.left=p[0]+"px";chat.style.top=p[1]+"px";}})();
-
-/* ---------- rendering ---------- */
-function userMsg(m){var d=document.createElement("div");d.className="m m-user";
-  d.innerHTML='<div class="m-bubble"></div>';d.firstChild.textContent=m.content;log.appendChild(d);return d;}
-function botMsg(m){var d=document.createElement("div");d.className="m m-bot";
-  d.innerHTML='<div class="m-content"></div><div class="m-tools"></div>';
-  log.appendChild(d);if(m)fillBot(d,m);return d;}
-function fillBot(d,m){d.querySelector(".m-content").innerHTML=md(m.content)+(m.stopped?'<p class="m-note">Stopped</p>':"");
-  var tools=d.querySelector(".m-tools");tools.innerHTML='<span class="m-time">'+esc(clock(m.ts))+'</span><button class="text-btn" type="button">Copy</button>';
-  tools.querySelector("button").addEventListener("click",function(){var b=this;
-    (navigator.clipboard?navigator.clipboard.writeText(m.content):Promise.reject()).then(function(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy";},1500);}).catch(function(){});});}
-function errMsg(msg,retry){var d=document.createElement("div");d.className="m m-err";
-  d.innerHTML='<span></span>'+(retry?'<button class="text-btn" type="button">Try again</button>':"");
-  d.firstChild.textContent=msg;if(retry)d.querySelector("button").addEventListener("click",function(){d.remove();retry();});log.appendChild(d);scroll();}
+/* ---------- transcript ---------- */
 function scroll(){log.scrollTop=log.scrollHeight;}
-function empty(){var e=document.createElement("div");e.className="chat-empty";
-  e.innerHTML='<h3>Hi '+esc(S.name||"there")+'</h3><p>Ask anything about the weekend. I know the plan and can look things up.</p><div class="sugg"></div>';
-  var g=e.querySelector(".sugg");
-  SUGGEST.forEach(function(q){var b=document.createElement("button");b.type="button";b.textContent=q;b.onclick=function(){ask(q);};g.appendChild(b);});
-  log.appendChild(e);}
+function userLine(m){var d=document.createElement("div");d.className="l-user";d.innerHTML='<span class="p">›</span><span class="txt"></span>';d.lastChild.textContent=m.content;log.appendChild(d);return d;}
+function botLine(m){var d=document.createElement("div");d.className="l-bot";d.innerHTML='<span class="dot" aria-hidden="true">●</span><div class="m-content"></div>';log.appendChild(d);if(m)fillBot(d,m);return d;}
+function fillBot(d,m){d.querySelector(".m-content").innerHTML=md(m.content);
+  var t=d.querySelector(".l-tools")||d.appendChild(document.createElement("div"));t.className="l-tools";
+  t.innerHTML="<span>"+esc(clock(m.ts))+(m.stopped?" · stopped":"")+'</span><button type="button">copy</button>';
+  t.querySelector("button").addEventListener("click",function(){var b=this;
+    (navigator.clipboard?navigator.clipboard.writeText(m.content):Promise.reject()).then(function(){b.textContent="copied";setTimeout(function(){b.textContent="copy";},1500);}).catch(function(){});});}
+function errLine(msg,retry){var d=document.createElement("div");d.className="l-err";d.textContent="⎿ "+msg;
+  if(retry){var b=document.createElement("button");b.type="button";b.className="cli-link";b.textContent="retry";b.onclick=function(){d.remove();retry();};d.appendChild(b);}
+  log.appendChild(d);scroll();}
+function note(msg){var d=document.createElement("div");d.className="l-note";d.textContent=msg;log.appendChild(d);scroll();}
+function empty(){var e=document.createElement("div");e.className="l-empty";e.innerHTML="<span>Ask anything about the weekend. Try:</span>";
+  SUGGEST.forEach(function(q){var b=document.createElement("button");b.type="button";b.textContent=q;b.onclick=function(){ask(q);};e.appendChild(b);});log.appendChild(e);}
 function render(){
-  var joined=!!S.code;
-  join.hidden=joined;log.hidden=!joined;chat.classList.toggle("locked",!joined);
-  if(!joined){$("joinName").value=S.name||"";return;}
+  join.hidden=!(needCode&&!S.code);
   log.innerHTML="";
   if(!S.msgs.length)empty();
-  S.msgs.forEach(function(m){if(m.role==="user")userMsg(m);else botMsg(m);});
+  S.msgs.forEach(function(m){if(m.role==="user")userLine(m);else botLine(m);});
   scroll();
 }
-function setStatus(state,msg){sub.className="chat-sub"+(state?" "+state:"");sub.textContent=msg;}
+function setStatus(state,msg){sub.className="cli-status"+(state?" "+state:"");sub.textContent=msg;}
 function health(){
   fetch(API+"/api/health").then(function(r){return r.ok?r.json():Promise.reject();})
-    .then(function(){checked=true;setStatus("ok","Online · knows the plan, can search the web");})
-    .catch(function(){setStatus("down","Offline right now. Try again later");});
+    .then(function(j){checked=true;needCode=!!j.code;setStatus("ok",(j.local?"local claude":"claude")+" · knows the plan");if(isOpen())render();})
+    .catch(function(){setStatus("down","trip server offline");});
 }
-function setBusy(on){busy=on;chat.classList.toggle("busy",on);send.setAttribute("aria-label",on?"Stop":"Send");send.title=on?"Stop (Esc)":"Send";}
+health();
 
-/* ---------- join ---------- */
+/* ---------- trip code (only when the backend is the public, shared one) ---------- */
 join.addEventListener("submit",function(e){
-  e.preventDefault();var name=$("joinName").value.trim(),code=$("joinCode").value.trim(),err=$("joinErr");
-  if(!name||!code)return;err.textContent="Checking…";
+  e.preventDefault();var code=$("joinCode").value.trim(),err=$("joinErr");if(!code)return;err.textContent="checking…";
   fetch(API+"/api/check",{method:"POST",headers:{"X-Trip-Code":code}}).then(function(r){
-    if(r.status===401){err.textContent="That trip code didn't work.";return;}
+    if(r.status===401){err.textContent="wrong code";return;}
     if(!r.ok)throw new Error();
-    S.name=name;S.code=code;save();err.textContent="";render();
-    if(pending){var q=pending;pending=null;text.value="";grow();ask(q);}else text.focus();
-  }).catch(function(){err.textContent="Can't reach the trip server. It may be offline.";});
+    S.code=code;save();err.textContent="";join.hidden=true;
+    if(pending){var q=pending;pending=null;ask(q);}else text.focus();
+  }).catch(function(){err.textContent="can't reach the server";});
 });
 
 /* ---------- ask ---------- */
@@ -135,29 +108,33 @@ function history(){
   while(h.length&&h[0].role!=="user")h.shift();
   return h.map(function(m){return {role:m.role,content:m.content};});
 }
+function setBusy(on){busy=on;chat.classList.toggle("busy",on);$("chatSend").textContent=on?"■":"↵";}
 function ask(q){
   q=q.trim();if(!q||busy)return;
   openChat();
-  if(!S.code){pending=q;text.value=q;grow();render();return;}
+  if(q==="/clear"||q==="/new"){S.msgs=[];save();render();return;}
+  if(q==="/help"){note("Enter sends · Shift+Enter adds a line · Esc hides or stops · /clear starts over");return;}
+  if(needCode&&!S.code){pending=q;join.hidden=false;$("joinCode").focus();return;}
   setBusy(true);
   var um={role:"user",content:q,ts:Date.now()};S.msgs.push(um);save();
-  var e0=log.querySelector(".chat-empty");if(e0)e0.remove();
-  userMsg(um);
-  var el=botMsg(null),content=el.querySelector(".m-content");
-  content.innerHTML='<div class="thinking">Thinking<span class="dots"><i></i><i></i><i></i></span></div>';scroll();
-  var acc="",ctx=null;try{ctx=window.tripApp&&window.tripApp.context();}catch(e){}
+  var e0=log.querySelector(".l-empty");if(e0)e0.remove();
+  var uEl=userLine(um);
+  var st=document.createElement("div");st.className="l-status";st.innerHTML='<span class="spin">✻</span><span class="w">Thinking…</span><span class="dim">(esc to stop)</span>';log.appendChild(st);scroll();
+  var f=0,spin=setInterval(function(){st.firstChild.textContent=SPIN[f++%SPIN.length];},110);
+  var el=null,acc="",ctx=null;try{ctx=window.tripApp&&window.tripApp.context();}catch(e){}
   ctrl=window.AbortController?new AbortController():null;
 
+  function stopSpin(){clearInterval(spin);st.remove();}
   function finish(stopped){var m={role:"assistant",content:acc,ts:Date.now(),stopped:stopped||undefined};S.msgs.push(m);save();fillBot(el,m);}
-  fetch(API+"/api/chat",{method:"POST",signal:ctrl&&ctrl.signal,headers:{"Content-Type":"application/json","X-Trip-Code":S.code},
-    body:JSON.stringify({name:S.name,messages:history(),context:ctx})})
+  fetch(API+"/api/chat",{method:"POST",signal:ctrl&&ctrl.signal,headers:{"Content-Type":"application/json","X-Trip-Code":S.code||""},
+    body:JSON.stringify({name:"",messages:history(),context:ctx})})
   .then(function(r){
-    if(r.status===401){S.code=null;save();throw new Error("The trip code changed. Enter the new one to keep chatting.");}
+    if(r.status===401){S.code=null;needCode=true;save();throw new Error("This server needs the trip code.");}
     if(!r.ok)return r.json().catch(function(){return {};}).then(function(j){throw new Error(j.detail||"The trip server had a problem ("+r.status+").");});
     var reader=r.body.getReader(),dec=new TextDecoder(),buf="";
     function handle(ev){
-      if(ev.type==="text"){acc+=ev.text;content.innerHTML=md(acc);scroll();}
-      else if(ev.type==="status"&&!acc){content.innerHTML='<div class="thinking">'+esc(ev.text)+'<span class="dots"><i></i><i></i><i></i></span></div>';}
+      if(ev.type==="text"){if(!el){stopSpin();el=botLine(null);}acc+=ev.text;el.querySelector(".m-content").innerHTML=md(acc);scroll();}
+      else if(ev.type==="status"&&!acc){st.querySelector(".w").textContent=ev.text+"…";}
       else if(ev.type==="error"){throw new Error(ev.message);}
     }
     function pump(){return reader.read().then(function(res){
@@ -168,25 +145,25 @@ function ask(q){
     });}
     return pump();
   })
-  .then(function(){if(!acc)throw new Error("No answer came back.");finish();})
+  .then(function(){stopSpin();if(!acc)throw new Error("No answer came back.");finish();})
   .catch(function(e){
-    if(e&&e.name==="AbortError"){if(acc)finish(true);else{el.remove();S.msgs.pop();save();}return;}
+    stopSpin();
+    if(e&&e.name==="AbortError"){if(acc)finish(true);else{uEl.remove();S.msgs.pop();save();note("stopped");}return;}
     var msg=e&&e.message&&e.message!=="Failed to fetch"?e.message:"Can't reach the trip server. It may be offline.";
-    if(acc){finish();errMsg(msg);}
-    else{el.remove();S.msgs.pop();save();
-      var userEl=log.lastElementChild;
-      errMsg(msg,S.code?function(){if(userEl&&userEl.classList.contains("m-user"))userEl.remove();ask(q);}:null);}
-    if(!S.code)render();
+    if(acc){finish();errLine(msg);}
+    else{S.msgs.pop();save();
+      if(needCode&&!S.code){uEl.remove();pending=q;join.hidden=false;errLine(msg);}
+      else errLine(msg,function(){uEl.remove();ask(q);});}
   })
   .then(function(){setBusy(false);ctrl=null;scroll();});
 }
 
 form.addEventListener("submit",function(e){e.preventDefault();
   if(busy){if(ctrl)ctrl.abort();return;}
-  var q=text.value;if(!q.trim()){openChat();return;}text.value="";grow();ask(q);});
+  var q=text.value;if(!q.trim())return;text.value="";grow();ask(q);});
 text.addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey&&!e.isComposing){e.preventDefault();if(!busy)form.requestSubmit();}});
-function grow(){text.style.height="auto";text.style.height=Math.min(text.scrollHeight,160)+"px";chat.classList.toggle("typed",!!text.value.trim());}
+function grow(){text.style.height="auto";text.style.height=Math.min(text.scrollHeight,150)+"px";}
 text.addEventListener("input",grow);
 
-window.tripChat={ask:function(q){if(busy){openChat();return;}ask(q);}};
+window.tripChat={ask:function(q){openChat();if(busy)return;ask(q);}};
 })();

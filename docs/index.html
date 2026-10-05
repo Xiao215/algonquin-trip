@@ -67,38 +67,25 @@
   </aside>
 </div>
 
-<section class="chat" id="chat" data-open="false" aria-label="Trip assistant">
-  <div class="chat-card">
-    <header class="chat-head" id="chatHead">
-      <div class="chat-title">
-        <span class="chat-name">Trip assistant</span>
-        <span class="chat-sub" id="chatSub">Knows the plan, can check the web</span>
-      </div>
-      <button class="text-btn" id="chatNew" type="button">New chat</button>
-      <button class="icon-btn" id="chatMin" type="button" title="Minimize (Esc)" aria-label="Minimize chat">
-        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
-      </button>
-    </header>
-
-    <div class="chat-body">
-      <form class="chat-join" id="chatJoin" hidden>
-        <h3>Ask anything about the weekend</h3>
-        <p>Times, bookings, packing, weather, food. It knows the whole plan and can search the web.</p>
-        <label>Your name <input id="joinName" autocomplete="nickname" maxlength="40" required></label>
-        <label>Trip code <input id="joinCode" type="password" autocomplete="off" required placeholder="From the group chat"></label>
-        <button type="submit" class="btn-primary">Start</button>
-        <span class="chat-err" id="joinErr" role="alert"></span>
-      </form>
-      <div class="chat-log" id="chatLog" aria-live="polite"></div>
-    </div>
-
-    <form class="composer" id="chatForm">
-      <textarea id="chatText" rows="1" placeholder="Ask about the trip…" aria-label="Ask the trip assistant" maxlength="2000"></textarea>
-      <button type="submit" id="chatSend" class="send" aria-label="Send">
-        <svg class="i-send" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4M5 9l5-5 5 5"/></svg>
-        <svg class="i-stop" viewBox="0 0 20 20" aria-hidden="true"><rect x="6" y="6" width="8" height="8" rx="1.5"/></svg>
-      </button>
+<section class="cli" id="chat" data-open="false" aria-label="Trip assistant">
+  <div class="cli-box">
+    <div class="cli-log" id="chatLog" aria-live="polite"></div>
+    <form class="cli-join" id="chatJoin" hidden>
+      <span>This server needs the trip code:</span>
+      <input id="joinCode" type="password" autocomplete="off" aria-label="Trip code" placeholder="trip code">
+      <button type="submit">enter</button>
+      <span class="cli-err" id="joinErr" role="alert"></span>
     </form>
+    <form class="cli-input" id="chatForm">
+      <span class="cli-prompt" aria-hidden="true">›</span>
+      <textarea id="chatText" rows="1" placeholder="Ask about the trip" aria-label="Ask the trip assistant" maxlength="2000" spellcheck="false"></textarea>
+      <kbd class="cli-kbd" id="chatKbd">⌘K</kbd>
+      <button type="submit" class="cli-send" id="chatSend" aria-label="Send">↵</button>
+    </form>
+    <div class="cli-foot">
+      <span class="cli-status" id="chatSub">connecting…</span>
+      <span class="cli-keys">enter to send · esc to hide · /clear</span>
+    </div>
   </div>
 </section>
 

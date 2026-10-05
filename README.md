@@ -34,31 +34,28 @@ With a key you get the full map: every drive drawn on real roads, the hike and p
 
 ## Run the backend
 
-1. Put your Anthropic API key in `backend/.env` (`ANTHROPIC_API_KEY=...`). `TRIP_CODE` in the same file is the passcode friends type the first time they open the chat. Share it in your group chat, not on GitHub.
-2. Make sure the Tailscale app is running, then:
+1. In `backend/.env`, set `TRIP_CODE` to a passcode only you know. The chat asks for it once per device.
+2. Answers come from your local claude-api (`ANTHROPIC_BASE_URL=http://127.0.0.1:8787`) on your Pro/Max plan, so this chat is for you only. To use a paid API key instead, remove that line and set `ANTHROPIC_API_KEY`.
+3. Make sure the Tailscale app is running on this Mac, then:
 
    ```bash
    ./start.sh
    ```
 
-   This serves the backend on `127.0.0.1:8790` and publishes it at
-   `https://xiaos-macbook-pro.tail3d8516.ts.net:8443`. Port 443 is left alone because another app on this Mac already uses it.
+   This serves the backend on `127.0.0.1:8790` and publishes it with Tailscale Funnel at
+   `https://xiaos-macbook-pro.tail3d8516.ts.net:8443`, reachable from any network. Your phone does not need Tailscale. Port 443 is left alone because another app on this Mac already uses it.
 
-The chat only works while your Mac is awake, online and running `start.sh`. To unpublish it:
+Open **https://xiao215.github.io/algonquin-trip/** on any device and type your passcode the first time you use the chat. The chat only works while your Mac is awake, online and running `start.sh`; the rest of the page always works. To unpublish the backend:
 
 ```bash
 tailscale funnel --https=8443 off
 ```
 
-The backend serves the site too: after `./start.sh`, open **http://localhost:8790/** on this Mac, or **https://xiaos-macbook-pro.tail3d8516.ts.net:8443/** on your phone (with Tailscale on). The API lives under `/api/`, so `/api/health` is the only API address you can open directly in a browser.
-
-### Using your local claude-api (personal use only)
-
-`backend/.env` has `ANTHROPIC_BASE_URL=http://127.0.0.1:8787`, so answers come from your local claude-api on your Pro/Max plan. In this mode `./start.sh` doesn't use Funnel; it uses `tailscale serve`, which makes the backend reachable only from your own devices on your tailnet (your phone needs the Tailscale app). If friends ever need the chat, remove that line and add an API key instead: a subscription can't serve other people.
+The backend also serves the site at **http://localhost:8790/**. The API lives under `/api/`, so `/api/health` is the only API address you can open directly in a browser.
 
 ## Host the frontend
 
-Push this folder to a GitHub repo, then go to **Settings → Pages** and pick **Deploy from a branch**, branch `main`, folder `/docs`. The site will be at `https://xiao215.github.io/<repo>/`.
+The repo is https://github.com/Xiao215/algonquin-trip, and GitHub Pages serves the `docs/` folder from `main` at https://xiao215.github.io/algonquin-trip/. Push to update it; the rebuild takes about a minute.
 
 If the page is ever served from a different origin, add it to `ALLOWED_ORIGINS` in `backend/.env`.
 
@@ -87,4 +84,4 @@ Then open `http://localhost:8000/?api=http://localhost:8790` to point the chat a
 | `MODEL` | `claude-opus-5-5` | |
 | `EFFORT` | `low` | Fast, cheap chat replies. Use `medium` for more careful answers. |
 | `FALLBACKS` | `default` | Server-side refusal fallback. Set `off` if the API ever rejects it. |
-| `PER_IP_PER_10MIN` / `DAILY_LIMIT` | `20` / `300` | Abuse guards, since the URL is public. |
+| `PER_IP_PER_10MIN` / `DAILY_LIMIT` | `20` / `300` | Extra guards on top of the passcode, since the URL is public. |

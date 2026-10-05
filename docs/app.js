@@ -107,8 +107,10 @@ function renderPrep(){
     var val=function(k){var f=(b.select||[]).concat(b.key||[]).filter(function(x){return x[0]===k;})[0];return f&&f[1];};
     var h='<details class="booking'+(b.hot?" hot":"")+(isDone?" done":"")+'" id="bk-'+esc(b.id)+'"'+(nb&&nb.id===b.id?" open":"")+'>';
     h+='<summary><span class="b-date">'+badge+'</span><span class="b-title">'+esc(b.what)+'</span>';
-    h+='<span class="b-line"><span class="due">'+esc(due)+'</span>'+[val("Park")||val("Store")||val("Where"),b.for.split(",")[0],val("Cost")].filter(Boolean).map(function(x){return " · "+esc(x);}).join("")+'</span>';
+    h+='<span class="b-line"><span class="due">'+esc(due)+'</span>'+[(b.site&&b.site.park)||val("Store")||val("Where"),b.for.split(",")[0],val("Cost")].filter(Boolean).map(function(x){return " · "+esc(x);}).join("")+'</span>';
     h+='<svg class="b-chev" viewBox="0 0 20 20"><path d="M5 8l5 5 5-5"/></svg></summary><div class="b-body">';
+    // a small replica of the booking site with the exact choices highlighted
+    if(b.site)h+=siteMock(b.site)+(b.then?'<p class="b-then">'+inline(b.then)+"</p>":"");
     // what to pick, in the order the booking site asks for it
     if(b.select&&b.select.length)h+='<ol class="select">'+b.select.map(function(x){return '<li><small>'+esc(x[0])+'</small><b>'+esc(x[1])+'</b></li>';}).join("")+"</ol>";
     if(b.key&&b.key.length)h+='<dl class="keyfacts">'+b.key.map(function(f){return "<div><dt>"+esc(f[0])+"</dt><dd>"+esc(f[1])+"</dd></div>";}).join("")+"</dl>";
@@ -139,6 +141,21 @@ function renderPrep(){
   $("footnote").textContent=T.footnote;
   $("sources").innerHTML="Sources: "+T.sources.concat([["Ontario Parks day-use FAQ","https://www.ontarioparks.ca/dayuse/faq"],["Algonquin day-use fees","https://www.algonquinpark.on.ca/visit/general_park_info/fees-day-use.php"],["Forecast: Open-Meteo","https://open-meteo.com/"]]).map(function(s){return '<a href="'+esc(s[1])+'" target="_blank" rel="noopener">'+esc(s[0])+'</a>';}).join(" · ");
   countPrep();
+}
+function siteMock(x){
+  var h='<div class="site"><div class="site-bar"><span></span><span></span><span></span>reservations.ontarioparks.ca</div><div class="site-body">';
+  h+='<div class="site-step"><span class="site-n">1</span><div class="site-main">';
+  h+='<div class="site-tabs"><span>Campsite</span><span class="on">'+esc(x.tab)+'</span><span>Backcountry</span><span>Roofed Accommodations</span></div>';
+  h+='<div class="site-radio"><span class="rb"></span>'+esc(x.type)+'</div>';
+  h+='<div class="site-fields"><div><small>Park</small><span class="fld pick">'+esc(x.park)+'</span></div><div><small>Arrival</small><span class="fld pick">'+esc(x.arrival)+'</span></div><span class="site-btn">Search</span></div>';
+  if(x.warn)h+='<p class="site-warn">'+esc(x.warn)+"</p>";
+  h+="</div></div>";
+  h+='<div class="site-step"><span class="site-n">2</span><div class="site-main"><div class="site-scroll"><table class="site-grid"><thead><tr><th>Activity</th>'+
+    x.dates.map(function(d,i){return '<th'+(i===x.pickDate?' class="col"':"")+">"+esc(d)+"</th>";}).join("")+"</tr></thead><tbody>"+
+    x.rows.map(function(r,ri){return '<tr'+(ri===x.pickRow?' class="row"':"")+"><th>"+esc(r)+"</th>"+x.dates.map(function(_,di){
+      return ri===x.pickRow&&di===x.pickDate?'<td class="hit"><span>Click</span></td>':"<td></td>";}).join("")+"</tr>";}).join("")+
+    "</tbody></table></div></div></div>";
+  return h+"</div></div>";
 }
 function countPrep(){var all=0,on=0;
   T.prep.forEach(function(card,ci){var c=0;card.items.forEach(function(_,ii){var el=document.querySelector('[data-id="'+ci+"-"+ii+'"]');if(el&&el.checked)c++;});

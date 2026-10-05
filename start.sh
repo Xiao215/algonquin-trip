@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# Starts the chat backend on localhost and publishes it on port 8443 (443 is left alone because
-# another app already uses it): through Tailscale Funnel with an API key, or privately to your own
-# tailnet with `tailscale serve` when backend/.env points at a local AI server.
+# Starts the chat backend on localhost and publishes it with Tailscale Funnel on port 8443 (443 is
+# left alone because another app already uses it). The chat asks for TRIP_CODE from backend/.env.
 # Ctrl+C stops the backend. To unpublish: tailscale funnel --https=8443 off
 set -euo pipefail
 cd "$(dirname "$0")/backend"
@@ -22,22 +21,8 @@ if lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then
   exit 1
 fi
 
-if grep -qE '^ANTHROPIC_BASE_URL=https?://(localhost|127\.0\.0\.1)' .env; then
-  # Local AI server (e.g. claude-api on a Pro/Max plan): personal use only, so never publish it
-  # to the internet. `tailscale serve` (not funnel) keeps it reachable from your own devices only.
-  tailscale funnel --https=8443 off >/dev/null 2>&1 || true
-  if tailscale status >/dev/null 2>&1; then
-    tailscale serve --bg --https=8443 "$PORT" >/dev/null
-    echo "Local AI mode: private to your tailnet (your own devices), not on the public internet."
-    echo "Open: http://localhost:$PORT/  (phone: https://$(tailscale status --json | python3 -c 'import json,sys;print(json.load(sys.stdin)["Self"]["DNSName"].rstrip("."))'):8443/)"
-  else
-    echo "Local AI mode: Tailscale is off, so only this Mac can use it (?api=http://localhost:$PORT)."
-  fi
-  exec uv run python server.py
-fi
-
-if ! grep -qE '^ANTHROPIC_API_KEY=.+' .env; then
-  echo "Warning: ANTHROPIC_API_KEY is empty in backend/.env, so the chat will answer with an error." >&2
+if ! grep -qE '^ANTHROPIC_BASE_URL=.+' .env && ! grep -qE '^ANTHROPIC_API_KEY=.+' .env; then
+  echo "Warning: neither ANTHROPIC_BASE_URL nor ANTHROPIC_API_KEY is set in backend/.env, so the chat will answer with an error." >&2
 fi
 
 if ! tailscale status >/dev/null 2>&1; then
@@ -45,10 +30,8 @@ if ! tailscale status >/dev/null 2>&1; then
   exit 1
 fi
 
-tailscale funnel --bg --https=8443 "$PORT"
-echo
-echo "Public URL (put this in docs/config.js):"
-echo "https://$(tailscale status --json | python3 -c 'import json,sys;print(json.load(sys.stdin)["Self"]["DNSName"].rstrip("."))'):8443"
-echo
+tailscale funnel --bg --https=8443 "$PORT" >/dev/null
+echo "Chat backend is public at https://$(tailscale status --json | python3 -c 'import json,sys;print(json.load(sys.stdin)["Self"]["DNSName"].rstrip("."))'):8443 (passcode required)."
+echo "Open the site: https://xiao215.github.io/algonquin-trip/"
 
 exec uv run python server.py
