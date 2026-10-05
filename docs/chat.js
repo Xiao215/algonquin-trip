@@ -74,8 +74,9 @@ function errLine(msg,retry){var d=document.createElement("div");d.className="l-e
   if(retry){var b=document.createElement("button");b.type="button";b.className="cli-link";b.textContent="retry";b.onclick=function(){d.remove();retry();};d.appendChild(b);}
   log.appendChild(d);scroll();}
 function note(msg){var d=document.createElement("div");d.className="l-note";d.textContent=msg;log.appendChild(d);scroll();}
-function empty(){var e=document.createElement("div");e.className="l-empty";e.innerHTML="<span>Ask anything about the weekend. Try:</span>";
-  SUGGEST.forEach(function(q){var b=document.createElement("button");b.type="button";b.textContent=q;b.onclick=function(){ask(q);};e.appendChild(b);});log.appendChild(e);}
+// starter questions as chips (not prompt lines), hidden as soon as anything is typed
+function empty(){var e=document.createElement("div");e.className="l-empty";e.innerHTML='<span class="l-empty-h">Suggested</span><div class="chips"></div>';
+  SUGGEST.forEach(function(q){var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=q;b.onclick=function(){ask(q);};e.lastChild.appendChild(b);});log.appendChild(e);}
 function render(){
   join.hidden=!(needCode&&!S.code);
   log.innerHTML="";
@@ -162,7 +163,7 @@ form.addEventListener("submit",function(e){e.preventDefault();
   if(busy){if(ctrl)ctrl.abort();return;}
   var q=text.value;if(!q.trim())return;text.value="";grow();ask(q);});
 text.addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey&&!e.isComposing){e.preventDefault();if(!busy)form.requestSubmit();}});
-function grow(){text.style.height="auto";text.style.height=Math.min(text.scrollHeight,150)+"px";}
+function grow(){chat.classList.toggle("typing",!!text.value.trim());text.style.height="auto";text.style.height=Math.min(text.scrollHeight,150)+"px";}
 text.addEventListener("input",grow);
 
 window.tripChat={ask:function(q){openChat();if(busy)return;ask(q);}};

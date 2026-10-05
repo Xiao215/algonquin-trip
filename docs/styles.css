@@ -264,7 +264,7 @@ li.now>.row .t{color:var(--maple);font-weight:600}
 .cli-log,.cli-foot{display:none}
 .cli[data-open="true"] .cli-log{display:flex}
 .cli[data-open="true"] .cli-foot{display:flex}
-.cli-log{flex-direction:column;gap:14px;max-height:min(56vh,520px);overflow-y:auto;padding:14px 16px 6px;overscroll-behavior:contain;scrollbar-width:thin}
+.cli-log{flex-direction:column;gap:14px;border-bottom:1px solid var(--line);max-height:min(56vh,520px);overflow-y:auto;padding:14px 16px 10px;overscroll-behavior:contain;scrollbar-width:thin}
 .cli-log:empty{display:none!important}
 
 .l-user{display:flex;gap:8px;padding:6px 10px;margin:0 -6px;border-radius:6px;background:var(--surface-2);font-size:13px;color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere}
@@ -288,14 +288,16 @@ li.now>.row .t{color:var(--maple);font-weight:600}
 .l-err{font-size:12.5px;color:var(--maple);padding-left:20px}
 .l-err .cli-link{color:var(--maple);margin-left:8px}
 .l-note{font-size:12px;color:var(--muted);padding-left:20px}
-.l-empty{display:grid;gap:4px;font-size:12.5px;color:var(--muted)}
-.l-empty button{border:0;background:none;padding:3px 0;font:inherit;font-size:13px;color:var(--ink);text-align:left;cursor:pointer;display:flex;gap:8px}
-.l-empty button::before{content:"›";color:var(--muted)}
-.l-empty button:hover{color:var(--forest)}
-.l-empty button:hover::before{color:var(--forest)}
+.l-empty{display:grid;gap:8px;padding-bottom:6px}
+.l-empty-h{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid color-mix(in srgb,var(--forest) 22%,transparent);background:var(--forest-soft);color:var(--forest);border-radius:999px;padding:5px 12px;font-family:var(--f-body);font-size:13px;line-height:1.3;text-align:left;cursor:pointer;transition:background .12s,border-color .12s}
+.chip:hover,.chip:focus-visible{background:color-mix(in srgb,var(--forest) 16%,var(--surface));border-color:color-mix(in srgb,var(--forest) 45%,transparent);outline:none}
+/* once you start typing, the suggestions get out of the way */
+.cli.typing .l-empty{display:none}
+.cli.typing .cli-log:has(>.l-empty:only-child){display:none}
 
 .cli-input{display:flex;align-items:flex-start;gap:10px;padding:10px 12px 10px 14px}
-.cli[data-open="true"] .cli-input{border-top:1px solid var(--line)}
 .cli-prompt{font-size:15px;line-height:22px}
 .cli-input textarea{flex:1;min-width:0;resize:none;border:0;background:transparent;color:var(--ink);font:inherit;font-size:13.5px;line-height:22px;max-height:150px;padding:0;outline:none}
 .cli-input textarea::placeholder{color:var(--muted)}
@@ -309,7 +311,7 @@ li.now>.row .t{color:var(--maple);font-weight:600}
 .cli-status::before{content:"● ";color:var(--line)}
 .cli-status.ok::before{color:var(--hike)}
 .cli-status.down::before{color:var(--maple)}
-.cli-join{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 14px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line)}
+.cli-join{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 14px;font-size:12.5px;color:var(--muted);border-bottom:1px solid var(--line)}
 .cli-join[hidden]{display:none}
 .cli-join input{font:inherit;font-size:13px;color:var(--ink);background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:160px}
 .cli-join button{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface-2);border-radius:6px;padding:4px 10px;cursor:pointer;color:var(--ink)}
