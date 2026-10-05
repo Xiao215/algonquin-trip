@@ -1,0 +1,1404 @@
+{
+ "title": "Algonquin Thanksgiving Weekend",
+ "eyebrow": "Huntsville · Oxtongue Lake · Hwy 60 · Sat Oct 10 – Sun Oct 11, 2026",
+ "dates": {
+  "start": "2026-10-10",
+  "end": "2026-10-11",
+  "timezone": "America/Toronto"
+ },
+ "lede": "Based in Huntsville. Saturday stays close to town at Arrowhead. Sunday starts with a morning paddle to Ragged Falls, then Algonquin's Lookout Trail and Spruce Bog in the afternoon, with dinner in Bracebridge on the way home.",
+ "conditions": [
+  [
+   "Arrowhead (Oct 1)",
+   "90% changed, 20% fallen, orange"
+  ],
+  [
+   "Algonquin (Oct 3)",
+   "90% changed, 30% fallen"
+  ],
+  [
+   "Sunset",
+   "about 6:40 pm"
+  ],
+  [
+   "Closed this weekend",
+   "Hardwood Lookout Trail"
+  ]
+ ],
+ "bookings": [
+  {
+   "id": "arrowhead",
+   "hot": true,
+   "opens": "2026-10-05T07:00",
+   "when": "Mon Oct 5 · 7:00 AM ET",
+   "what": "Arrowhead day-use permit",
+   "for": "Sat Oct 10",
+   "cost": "About $21 per car (exact price shows at checkout)",
+   "summary": "Needed to get into Arrowhead on Saturday. Thanksgiving weekend at peak colour sells out, so book right at 7:00 AM.",
+   "steps": [
+    "Before 7:00 AM, sign in (or create an account) at [reservations.ontarioparks.ca](https://reservations.ontarioparks.ca).",
+    "Open the **Day Use** tab and keep **Daily Vehicle Permit (DVP)** selected.",
+    "Park: `Arrowhead`. Arrival date: **Sat Oct 10**. Pick the full-day permit.",
+    "On the calendar, a green check means spots are left; a red X means sold out.",
+    "Accept the acknowledgements, then **Checkout**. Name the driver as the occupant (the permit is issued to that person).",
+    "Enter the licence plate. Not sure which car yet? Use `000000` and update it later under **Preregister**.",
+    "Pay and keep the confirmation email."
+   ],
+   "facts": [
+    [
+     "Covers",
+     "One car and everyone in it (up to 14)"
+    ],
+    [
+     "Valid",
+     "Park day-use hours, Sat Oct 10"
+    ],
+    [
+     "Refunds",
+     "Only within 2 hours of buying; no date changes"
+    ],
+    [
+     "Check-in",
+     "Your plate is your permit. No stop needed at the Visitor Centre if the plate is on the booking"
+    ]
+   ],
+   "tips": [
+    "Be on the page at 6:55 so you can grab it the moment it opens.",
+    "Phone backup: `1-888-668-7275` (opens 7:00 AM), but online is usually faster."
+   ],
+   "links": [
+    [
+     "Ontario Parks reservations",
+     "https://reservations.ontarioparks.ca"
+    ],
+    [
+     "Advance permit how-to",
+     "https://blog.ontarioparks.ca/reserve-daily-vehicle-permit-advance"
+    ]
+   ],
+   "select": [
+    [
+     "Tab",
+     "Day Use"
+    ],
+    [
+     "Type",
+     "Daily Vehicle Permit"
+    ],
+    [
+     "Park",
+     "Arrowhead"
+    ],
+    [
+     "Date",
+     "Sat Oct 10"
+    ],
+    [
+     "Permit",
+     "Full day"
+    ]
+   ],
+   "key": [
+    [
+     "Cost",
+     "~$21 per car"
+    ],
+    [
+     "Covers",
+     "1 car, up to 14 people"
+    ],
+    [
+     "Refund",
+     "Only within 2 h"
+    ]
+   ],
+   "tip": "Be signed in by 6:55. Not sure which car? Enter plate `000000` and fix it later."
+  },
+  {
+   "id": "algonquin",
+   "hot": true,
+   "opens": "2026-10-06T07:00",
+   "when": "Tue Oct 6 · 7:00 AM ET",
+   "what": "Algonquin Hwy 60 permit",
+   "for": "Sun Oct 11",
+   "cost": "$21.00 per car (HST included)",
+   "summary": "Needed for the Lookout Trail first thing Sunday morning. Driving through on Hwy 60 without stopping doesn't need one, and the Oxtongue Lake paddle is outside the park.",
+   "steps": [
+    "At 7:00 AM, same site: **Day Use** tab, **Daily Vehicle Permit (DVP)**.",
+    "Park: `Algonquin Park – Hwy 60 Corridor`. Arrival date: **Sun Oct 11**.",
+    "If it asks for an entry point, pick **West Gate** (km 0). That's where we come in from Huntsville.",
+    "Permit type: `DVP - Hwy 60 (Does not include Booth's Rock Trail)`. Same price as the Booth's Rock option. Booth's Rock isn't in our plan, and its spots are capped this fall, so leave those for people hiking it.",
+    "Enter the licence plate (or `000000` and update later), pay, and keep the confirmation."
+   ],
+   "facts": [
+    [
+     "Covers",
+     "One car and everyone in it (up to 14)"
+    ],
+    [
+     "Valid",
+     "7:00 AM – 10:00 PM, Sun Oct 11"
+    ],
+    [
+     "Refunds",
+     "Non-refundable after 2 hours"
+    ],
+    [
+     "Check-in",
+     "Plate is your permit; drive straight through the West Gate"
+    ]
+   ],
+   "tips": [
+    "Discounts: Ontario seniors $16.80, Ontario residents with a disability $10.50.",
+    "Hardwood Lookout (km 13.8) is closed Oct 9–12. Our Lookout Trail is a different trail at km 39.7."
+   ],
+   "links": [
+    [
+     "Ontario Parks reservations",
+     "https://reservations.ontarioparks.ca"
+    ],
+    [
+     "Algonquin day-use fees",
+     "https://www.algonquinpark.on.ca/visit/general_park_info/fees-day-use.php"
+    ]
+   ],
+   "select": [
+    [
+     "Tab",
+     "Day Use"
+    ],
+    [
+     "Type",
+     "Daily Vehicle Permit"
+    ],
+    [
+     "Park",
+     "Algonquin Park – Hwy 60 Corridor"
+    ],
+    [
+     "Date",
+     "Sun Oct 11"
+    ],
+    [
+     "Entry",
+     "West Gate"
+    ],
+    [
+     "Permit",
+     "Hwy 60 (does not include Booth's Rock Trail)"
+    ]
+   ],
+   "key": [
+    [
+     "Cost",
+     "$21 per car"
+    ],
+    [
+     "Valid",
+     "7 AM – 10 PM"
+    ],
+    [
+     "Refund",
+     "Only within 2 h"
+    ]
+   ],
+   "tip": "Only needed for the Lookout Trail stop. The paddle at Oxtongue Lake is outside the park. Want Booth's Rock Trail too? Pick “Booth's Rock Trail + Hwy 60” instead (same price)."
+  },
+  {
+   "id": "canoe",
+   "hot": false,
+   "when": "Book now",
+   "what": "Ragged Falls canoe",
+   "for": "Sun Oct 11, ~9:30 AM pickup",
+   "cost": "$53.98 for a 2-person canoe",
+   "summary": "Self-guided paddle from the Algonquin Outfitters store on Oxtongue Lake. Rentals end Oct 12, so this is the last weekend. Reserve to be safe.",
+   "steps": [
+    "Call Algonquin Outfitters at `1-800-469-4948` or `705-635-2243`.",
+    "Ask for the **Ragged Falls day trip**, **Sun Oct 11**, pickup around **9:30 AM** at the **Oxtongue Lake** store.",
+    "Ask what time the canoe has to be back. We plan to return around 1:00 PM.",
+    "Tell them how many people so they can suggest the right boat.",
+    "Ask when the store opens on Thanksgiving Sunday, since the plan picks up at 9:20."
+   ],
+   "facts": [
+    [
+     "Includes",
+     "Canoe, paddles, safety kit and map"
+    ],
+    [
+     "Time",
+     "3–4 h return"
+    ],
+    [
+     "Other boats",
+     "1-person kayak or paddleboard $53.98 · 3-person canoe or 2-person kayak $64.98"
+    ],
+    [
+     "Season",
+     "Through Oct 12"
+    ]
+   ],
+   "tips": [
+    "They say walk-ups are fine for small groups, but it's the holiday weekend and the last weekend of the season.",
+    "Pack phones and keys in a dry bag; the water is cold in October."
+   ],
+   "links": [
+    [
+     "Ragged Falls trip page",
+     "https://algonquinoutfitters.com/daytrip/ragged-falls-canoe-kayak-trip"
+    ]
+   ],
+   "select": [
+    [
+     "Call",
+     "1-800-469-4948"
+    ],
+    [
+     "Ask for",
+     "Ragged Falls day trip"
+    ],
+    [
+     "Store",
+     "Oxtongue Lake"
+    ],
+    [
+     "Date",
+     "Sun Oct 11, ~9:30 AM"
+    ],
+    [
+     "Boat",
+     "2-person canoe"
+    ]
+   ],
+   "key": [
+    [
+     "Cost",
+     "$53.98"
+    ],
+    [
+     "Includes",
+     "Canoe, paddles, PFDs, map"
+    ],
+    [
+     "Season",
+     "Ends Oct 12"
+    ]
+   ],
+   "tip": "Confirm their Sunday opening time; we plan to pick up ~9:20 and return ~1:00 PM."
+  },
+  {
+   "id": "room",
+   "hot": false,
+   "when": "Book now",
+   "what": "Huntsville room",
+   "for": "Sat Oct 10, 1 night",
+   "cost": "Varies; holiday-weekend prices",
+   "summary": "One night in Huntsville. Saturday's plan has us checking in around 3:00 PM, then walking downtown.",
+   "steps": [
+    "Search for Sat Oct 10 – Sun Oct 11 in Huntsville.",
+    "Aim for somewhere walkable to Main Street, with parking.",
+    "Pick a free-cancellation rate in case plans change.",
+    "Ask whether a 3:00 PM check-in works; that's when we arrive from Arrowhead."
+   ],
+   "facts": [
+    [
+     "Nights",
+     "1 (Sat)"
+    ],
+    [
+     "Check in",
+     "~3:00 PM Sat"
+    ],
+    [
+     "Leave",
+     "8:45 AM Sun"
+    ]
+   ],
+   "tips": [
+    "Thanksgiving weekend fills up and prices climb, so don't wait."
+   ],
+   "links": [],
+   "select": [
+    [
+     "Where",
+     "Huntsville, near Main St"
+    ],
+    [
+     "Dates",
+     "Sat Oct 10 → Sun Oct 11"
+    ],
+    [
+     "Check-in",
+     "~3:00 PM"
+    ],
+    [
+     "Rate",
+     "Free cancellation"
+    ]
+   ],
+   "key": [
+    [
+     "Nights",
+     "1"
+    ],
+    [
+     "Leave",
+     "8:45 AM Sun"
+    ]
+   ],
+   "tip": "Holiday weekend: prices climb, so book soon."
+  },
+  {
+   "id": "dinner",
+   "hot": false,
+   "when": "This week",
+   "what": "Saturday dinner",
+   "for": "Sat Oct 10, ~7:00 PM",
+   "cost": "",
+   "summary": "Dinner on Main Street after sunset at Lion's Lookout. A reservation helps on a holiday weekend.",
+   "steps": [
+    "Pick a spot downtown (ask the trip assistant for ideas).",
+    "Book for about 7:00 PM. Lion's Lookout sunset is about 6:40 and it's 10 minutes back."
+   ],
+   "facts": [],
+   "tips": [
+    "No early alarm: Sunday starts at 8:45."
+   ],
+   "links": [],
+   "select": [
+    [
+     "Where",
+     "Main St, Huntsville"
+    ],
+    [
+     "When",
+     "Sat Oct 10, ~7:00 PM"
+    ]
+   ],
+   "key": [],
+   "tip": "Sunset at Lion's Lookout is ~6:40, 10 minutes from downtown."
+  }
+ ],
+ "prep": [
+  {
+   "title": "Pack",
+   "items": [
+    {
+     "t": "Warm non-cotton layers, a rain or wind shell, hat and light gloves",
+     "more": "Mid-October mornings in Muskoka and Algonquin can be near freezing, and it's colder on the water. Check the forecast above each day."
+    },
+    {
+     "t": "Shoes that can get wet, plus hiking shoes",
+     "more": "You may step into the shallows launching the canoe. Fall trails get muddy, especially the Arrowhead Lake loop."
+    },
+    {
+     "t": "Dry bag or zip bags for phones and keys"
+    },
+    {
+     "t": "A full change of dry clothes, left in the car",
+     "more": "For after the paddle, before the drive home."
+    },
+    {
+     "t": "Picnic lunches, water and snacks",
+     "more": "Saturday's lunch is a picnic at Arrowhead Lake; Sunday's is at Ragged Falls. Grab both in Huntsville."
+    },
+    {
+     "t": "Phone charger and power bank"
+    },
+    {
+     "t": "Small first-aid kit, sunscreen, bug spray"
+    }
+   ]
+  },
+  {
+   "title": "Before you drive",
+   "items": [
+    {
+     "t": "Check the permit confirmation emails (plate number right?)",
+     "more": "If the car changed, update the plate under Preregister in your Ontario Parks account, or call 1-888-668-7275."
+    },
+    {
+     "t": "Download offline Google Maps for Huntsville to Algonquin",
+     "more": "Cell service drops out inside the park."
+    },
+    {
+     "t": "Check the colour report the Thursday before",
+     "more": "[ontarioparks.ca/fallcolour](https://www.ontarioparks.ca/fallcolour)"
+    },
+    {
+     "t": "Fill up in Huntsville or Dwight",
+     "more": "There's no gas inside Algonquin."
+    }
+   ]
+  },
+  {
+   "title": "On the road",
+   "items": [
+    {
+     "t": "Park only in marked lots",
+     "more": "Stopping on the Hwy 60 shoulder can get you towed. If the Lookout Trail lot is full, park at Big Pines (km 40.3) and take the 450 m connector."
+    },
+    {
+     "t": "Watch for moose and deer at dusk",
+     "more": "Especially on the drive out of the park and on Hwy 60 after sunset."
+    },
+    {
+     "t": "Leave buffer for holiday traffic",
+     "more": "Holiday traffic on the 400 can add 30–60 minutes each way."
+    }
+   ]
+  }
+ ],
+ "sources": [
+  [
+   "Arrowhead in fall",
+   "https://blog.ontarioparks.ca/?p=42073"
+  ],
+  [
+   "Algonquin fall guide",
+   "https://blog.ontarioparks.ca/fall-colours-at-algonquin-provincial-park/"
+  ],
+  [
+   "Fall Colour Report",
+   "https://www.ontarioparks.ca/fallcolour"
+  ],
+  [
+   "Algonquin trails",
+   "https://www.ontarioparks.ca/park/algonquin/activities"
+  ],
+  [
+   "Ragged Falls paddle",
+   "https://algonquinoutfitters.com/daytrip/ragged-falls-canoe-kayak-trip"
+  ]
+ ],
+ "footnote": "Times are a plan, not a schedule. Holiday traffic on the 400 can add 30–60 minutes.",
+ "places": {
+  "markham": {
+   "ll": [
+    43.856,
+    -79.337
+   ]
+  },
+  "finch": {
+   "ll": [
+    43.78,
+    -79.415
+   ],
+   "gid": "ChIJ__9vWA4tK4gRhlywwF4iaRs"
+  },
+  "barrie": {
+   "ll": [
+    44.389,
+    -79.69
+   ]
+  },
+  "orillia": {
+   "ll": [
+    44.608,
+    -79.42
+   ]
+  },
+  "gravenhurst": {
+   "ll": [
+    44.918,
+    -79.373
+   ]
+  },
+  "bracebridge": {
+   "ll": [
+    45.04,
+    -79.31
+   ]
+  },
+  "hunts": {
+   "ll": [
+    45.3272,
+    -79.216
+   ],
+   "gid": "ChIJ1-7YCzJyKk0RmUapAfzGYsQ"
+  },
+  "lions": {
+   "ll": [
+    45.3269,
+    -79.2075
+   ],
+   "gid": "ChIJIWXUj81zKk0Ri3--ZcqWK1M"
+  },
+  "a1": {
+   "ll": [
+    45.35,
+    -79.214
+   ]
+  },
+  "ajct": {
+   "ll": [
+    45.376,
+    -79.222
+   ]
+  },
+  "agate": {
+   "ll": [
+    45.385,
+    -79.211
+   ]
+  },
+  "beach": {
+   "ll": [
+    45.3909,
+    -79.2021
+   ],
+   "gid": "ChIJDT0k5TINKk0Rj8AbTHfbzxU"
+  },
+  "stubbs": {
+   "ll": [
+    45.3829,
+    -79.2092
+   ],
+   "gid": "ChIJEe9XF8ZyKk0RtleeQ-zlPjg"
+  },
+  "bigbend": {
+   "ll": [
+    45.3886,
+    -79.192
+   ],
+   "gid": "ChIJEbP1NdRyKk0RXGFa5911eZ8"
+  },
+  "hwy11n": {
+   "ll": [
+    45.47,
+    -79.215
+   ]
+  },
+  "hwy11s": {
+   "ll": [
+    45.25,
+    -79.3
+   ]
+  },
+  "h2": {
+   "ll": [
+    45.338,
+    -79.15
+   ]
+  },
+  "dwight": {
+   "ll": [
+    45.328,
+    -79.025
+   ]
+  },
+  "aostore": {
+   "ll": [
+    45.3814,
+    -78.925
+   ],
+   "gid": "ChIJp1g2oQqM1UwRMmswPeEv9D0"
+  },
+  "oxt": {
+   "ll": [
+    45.383,
+    -78.937
+   ]
+  },
+  "rfturn": {
+   "ll": [
+    45.4,
+    -78.913
+   ]
+  },
+  "ragged": {
+   "ll": [
+    45.3919,
+    -78.9061
+   ],
+   "gid": "ChIJgWbXMhvz1UwRpJdEuhIJuAM"
+  },
+  "wg": {
+   "ll": [
+    45.44,
+    -78.825
+   ]
+  },
+  "k7": {
+   "ll": [
+    45.475,
+    -78.775
+   ]
+  },
+  "k14": {
+   "ll": [
+    45.528,
+    -78.712
+   ]
+  },
+  "portage": {
+   "ll": [
+    45.5353,
+    -78.7083
+   ]
+  },
+  "k20": {
+   "ll": [
+    45.552,
+    -78.645
+   ]
+  },
+  "art": {
+   "ll": [
+    45.5565,
+    -78.643
+   ]
+  },
+  "k27": {
+   "ll": [
+    45.565,
+    -78.565
+   ]
+  },
+  "k31": {
+   "ll": [
+    45.578,
+    -78.52
+   ]
+  },
+  "k33": {
+   "ll": [
+    45.58,
+    -78.497
+   ]
+  },
+  "k37": {
+   "ll": [
+    45.577,
+    -78.45
+   ]
+  },
+  "lookout": {
+   "ll": [
+    45.579,
+    -78.4066
+   ],
+   "gid": "ChIJxSwe5MrZ1UwRes86I5Mte9Q"
+  },
+  "k40": {
+   "ll": [
+    45.578,
+    -78.398
+   ]
+  },
+  "spruce": {
+   "ll": [
+    45.582,
+    -78.375
+   ]
+  },
+  "vc": {
+   "ll": [
+    45.581,
+    -78.366
+   ]
+  },
+  "k46": {
+   "ll": [
+    45.588,
+    -78.325
+   ]
+  },
+  "highfalls": {
+   "ll": [
+    45.08801,
+    -79.30222
+   ]
+  },
+  "sprucebog": {
+   "ll": [
+    45.58719,
+    -78.37348
+   ]
+  },
+  "bbfalls": {
+   "ll": [
+    45.03998,
+    -79.30703
+   ]
+  }
+ },
+ "days": {
+  "sat": {
+   "title": "Saturday, October 10",
+   "sub": "Finch pickup, Arrowhead lookouts and falls, evening in Huntsville",
+   "min": "07:30",
+   "max": "21:00",
+   "def": "11:30",
+   "segs": [
+    {
+     "t": "stop",
+     "place": "markham",
+     "start": "07:35",
+     "end": "07:35",
+     "kind": "start",
+     "name": "Leave Markham",
+     "verb": "Leaving Markham",
+     "body": "About 20–25 minutes to Finch Station.",
+     "tips": [
+      "Use the Kiss 'n' Ride at Finch so you don't need to park."
+     ]
+    },
+    {
+     "t": "drive",
+     "path": [
+      "markham",
+      "finch"
+     ],
+     "start": "07:35",
+     "end": "08:00",
+     "label": "Markham → Finch",
+     "geom": "iutjG|sfcN~CtKpGmApCzPvAhKrAhJpAzJ~AhLtAfKjB|NrAbKjIfGpH}ApGu@`I}ArG_@pF`J`CfI~BtLzDn_@hAlMzArPdBnSjAnMr@lK|@pSZnNDvM?rKQ|VsBpc@yAlLkHxOKvJ`J_BvGmAbHkA`JkBbHgAvHkA`HmApIyAlMqBvIsAjIsAfHeApGq@dKgBlLeB~H}@rI}AhG_AxJcBzHoArHcBhFgEdHyChLcBfIoAnHeAjG}@fIiAxGcArHu@fKoAzH_AlHu@fFfEbBvLhBhN~AnLdC~QfBfMfAlJtAdKzAfLpAlJv@`J"
+    },
+    {
+     "t": "stop",
+     "place": "finch",
+     "start": "08:00",
+     "end": "08:05",
+     "kind": "meet",
+     "name": "Pick up at Finch Station",
+     "verb": "Picking up at Finch",
+     "facts": [
+      [
+       "Where",
+       "Yonge & Finch, Kiss 'n' Ride"
+      ],
+      [
+       "Friend leaves downtown",
+       "about 7:15"
+      ]
+     ],
+     "body": "Your friend takes Line 1 north from downtown, about 30–40 minutes. From Finch it's straight onto the 400 north.",
+     "tips": [
+      "If the pickup slips to 9:00, just shift Saturday an hour. There's room in the afternoon."
+     ]
+    },
+    {
+     "t": "drive",
+     "path": [
+      "finch",
+      "barrie",
+      "orillia",
+      "gravenhurst",
+      "bracebridge",
+      "highfalls"
+     ],
+     "start": "08:05",
+     "end": "09:55",
+     "label": "Finch → High Falls",
+     "note": "Hwy 400 to Barrie, then Hwy 11 north. About 1 h 50 m without holiday traffic."
+    },
+    {
+     "t": "stop",
+     "place": "highfalls",
+     "start": "09:55",
+     "end": "10:15",
+     "kind": "visit",
+     "name": "High Falls",
+     "verb": "Stretching legs at High Falls",
+     "facts": [
+      [
+       "Walk",
+       "Under 100 m from the car"
+      ],
+      [
+       "Time",
+       "About 20 min"
+      ]
+     ],
+     "body": "A wide waterfall on the Muskoka River right beside Hwy 11, just north of Bracebridge, with a small picnic area. A good first stretch after two hours in the car.",
+     "tips": [
+      "Exit at Hwy 117 (Cedar Lane), go west and take the first right. It's easy to miss."
+     ]
+    },
+    {
+     "t": "drive",
+     "path": [
+      "highfalls",
+      "hunts"
+     ],
+     "start": "10:15",
+     "end": "10:35",
+     "label": "High Falls → Huntsville"
+    },
+    {
+     "t": "stop",
+     "place": "hunts",
+     "start": "10:35",
+     "end": "10:50",
+     "kind": "food",
+     "name": "Huntsville stop",
+     "verb": "Coffee, gas and lunch pickup in Huntsville",
+     "facts": [
+      [
+       "Do",
+       "Gas, coffee, washroom"
+      ],
+      [
+       "Grab",
+       "Picnic lunch"
+      ]
+     ],
+     "body": "Pick up lunch here. Arrowhead is only 5 minutes up Hwy 11.",
+     "tips": [
+      "Fill up today so Sunday's drive into Algonquin is easy."
+     ]
+    },
+    {
+     "t": "drive",
+     "path": [
+      "hunts",
+      "a1",
+      "ajct",
+      "agate",
+      "bigbend"
+     ],
+     "start": "10:50",
+     "end": "11:05",
+     "label": "Huntsville → Big Bend Lookout",
+     "note": "Check in at the Arrowhead gatehouse, which is now at the Visitor Centre, then drive in to the Big Bend lot."
+    },
+    {
+     "t": "stop",
+     "place": "bigbend",
+     "start": "11:05",
+     "end": "11:30",
+     "kind": "visit",
+     "name": "Big Bend Lookout",
+     "verb": "At Big Bend Lookout",
+     "facts": [
+      [
+       "Walk",
+       "Short, a few minutes from the lot"
+      ],
+      [
+       "Time",
+       "About 25 min"
+      ]
+     ],
+     "body": "A high sand bluff above a huge horseshoe bend in the East River, carved by old glacial river deposits. Interpretive panels explain how it formed. This is one of the park's top fall viewpoints.",
+     "tips": [
+      "Morning light is best here."
+     ]
+    },
+    {
+     "t": "drive",
+     "path": [
+      "bigbend",
+      "stubbs"
+     ],
+     "start": "11:30",
+     "end": "11:35",
+     "label": "Big Bend → Stubb's Falls"
+    },
+    {
+     "t": "stop",
+     "place": "stubbs",
+     "start": "11:35",
+     "end": "12:20",
+     "kind": "hike",
+     "name": "Stubb's Falls",
+     "verb": "Hiking to Stubb's Falls",
+     "facts": [
+      [
+       "Time",
+       "About 45 min"
+      ],
+      [
+       "Terrain",
+       "Hardwood forest, stairs at the end"
+      ]
+     ],
+     "body": "A walk along the Little East River through maple forest to a small waterfall surrounded by colour.",
+     "tips": [
+      "There are stairs down to the main viewing area."
+     ]
+    },
+    {
+     "t": "drive",
+     "path": [
+      "stubbs",
+      "beach"
+     ],
+     "start": "12:20",
+     "end": "12:27",
+     "label": "Stubb's Falls → Arrowhead Lake"
+    },
+    {
+     "t": "stop",
+     "place": "beach",
+     "start": "12:27",
+     "end": "13:05",
+     "kind": "food",
+     "name": "Picnic at Arrowhead Lake",
+     "verb": "Picnic at Arrowhead Lake",
+     "body": "Eat by the lake at the main beach area, which the park lists as a top fall colour spot.",
+     "tips": [
+      "Use the animal-proof bins for garbage."
+     ]
+    },
+    {
+     "t": "stop",
+     "place": "beach",
+     "start": "13:05",
+     "end": "15:00",
+     "kind": "hike",
+     "name": "Arrowhead Lake Trail",
+     "verb": "Hiking the Arrowhead Lake Trail",
+     "routeKind": "hike",
+     "facts": [
+      [
+       "Length",
+       "5.1 km loop"
+      ],
+      [
+       "Time",
+       "1.5–2 h"
+      ],
+      [
+       "Terrain",
+       "Mostly gentle, can be muddy"
+      ]
+     ],
+     "body": "A loop all the way around a quiet, motorboat-free lake ringed by forest. The easiest way to be surrounded by colour for a couple of hours.",
+     "tips": [
+      "Fall rain makes some sections muddy and slippery.",
+      "Shorter option: the 2 km Mayflower Lake Trail, which is rugged but quick."
+     ],
+     "geom": "el`tGpdlbNq@mF{AsKaBoGcBaG{@wFq@aA_AYo@J{@@Ob@l@v@_@|AyAz@a@hAIpD|AlD?vCJp@_@Tm@a@mARuAHuAs@{AsAcBkAwAmAwAi@cBHy@zAiE~HTlDWhA}CdHeBjCc@tCe@zCIlDDxC}@~AUlDdAl@lB@NiAWcBpARdA`A]t@[rCpAbClB]rBeIdDm@dEgCrDo@vCuEzAwE|C]jAyAbBG~A}B~Ah@z@z@v@VxBGn@OSaAUaC??"
+    },
+    {
+     "t": "drive",
+     "path": [
+      "beach",
+      "agate",
+      "ajct",
+      "a1",
+      "hunts"
+     ],
+     "start": "15:00",
+     "end": "15:15",
+     "label": "Arrowhead → Huntsville"
+    },
+    {
+     "t": "stop",
+     "place": "hunts",
+     "start": "15:15",
+     "end": "17:50",
+     "kind": "stay",
+     "name": "Check in + downtown",
+     "verb": "Checking in, wandering downtown Huntsville",
+     "body": "Drop the bags and rest, then walk Main Street and along the river. Pick a dinner spot and book it if you can.",
+     "tips": [
+      "A relaxed afternoon on purpose. Sunday has the longer day."
+     ]
+    },
+    {
+     "t": "drive",
+     "path": [
+      "hunts",
+      "lions"
+     ],
+     "start": "17:50",
+     "end": "18:00",
+     "label": "Huntsville → Lion's Lookout",
+     "geom": "k~ssGf{nbNtHaBtHuA^yLk@gKAgKkF{DeF}Ec@tA"
+    },
+    {
+     "t": "stop",
+     "place": "lions",
+     "start": "18:00",
+     "end": "18:45",
+     "kind": "visit",
+     "name": "Sunset at Lion's Lookout",
+     "verb": "Sunset at Lion's Lookout",
+     "facts": [
+      [
+       "Sunset",
+       "About 6:40 pm"
+      ],
+      [
+       "Cost",
+       "Free"
+      ]
+     ],
+     "body": "A lookout a few minutes from downtown with a view over Huntsville, Fairy Lake and the hills.",
+     "tips": []
+    },
+    {
+     "t": "drive",
+     "path": [
+      "lions",
+      "hunts"
+     ],
+     "start": "18:45",
+     "end": "18:55",
+     "label": "Lion's Lookout → downtown",
+     "geom": "c{ssG`embN|FfCrGNbDsI|DuHpG|F`F`HpCbOqBlKeGlFsHlE}GnC_Hl@sItFc@iB"
+    },
+    {
+     "t": "stop",
+     "place": "hunts",
+     "start": "18:55",
+     "end": "21:00",
+     "kind": "food",
+     "name": "Dinner in Huntsville",
+     "verb": "Dinner in Huntsville",
+     "body": "Main Street has the most choice. Holiday weekend, so a reservation helps.",
+     "tips": [
+      "No early alarm: Sunday starts at 8:45."
+     ]
+    }
+   ]
+  },
+  "sun": {
+   "title": "Sunday, October 11",
+   "sub": "Morning paddle to Ragged Falls, Algonquin in the afternoon, dinner in Bracebridge",
+   "min": "08:30",
+   "max": "22:00",
+   "def": "10:30",
+   "segs": [
+    {
+     "t": "stop",
+     "place": "hunts",
+     "start": "08:45",
+     "end": "08:45",
+     "kind": "start",
+     "name": "Leave Huntsville",
+     "verb": "Leaving Huntsville",
+     "body": "Check out, grab breakfast and a picnic lunch. About 35 minutes to Oxtongue Lake.",
+     "tips": [
+      "Monday is Thanksgiving, so getting home around 10 tonight is fine."
+     ]
+    },
+    {
+     "t": "drive",
+     "path": [
+      "hunts",
+      "h2",
+      "dwight",
+      "aostore"
+     ],
+     "start": "08:45",
+     "end": "09:20",
+     "label": "Huntsville → Oxtongue Lake",
+     "note": "Hwy 60 east past Dwight. The Algonquin Outfitters store is right on the highway at Oxtongue Lake."
+    },
+    {
+     "t": "stop",
+     "place": "aostore",
+     "start": "09:20",
+     "end": "09:35",
+     "kind": "meet",
+     "name": "Pick up the canoe",
+     "verb": "Picking up the canoe at Oxtongue Lake",
+     "facts": [
+      [
+       "Where",
+       "Algonquin Outfitters, Oxtongue Lake"
+      ],
+      [
+       "Permit",
+       "None needed (outside the park)"
+      ]
+     ],
+     "body": "Check in, get life jackets, paddles and a map, and ask the staff for a quick how-to if you're new to canoeing.",
+     "tips": [
+      "Put phones and keys in a dry bag before you launch."
+     ]
+    },
+    {
+     "t": "stop",
+     "place": "aostore",
+     "start": "09:35",
+     "end": "13:05",
+     "kind": "paddle",
+     "name": "Paddle to Ragged Falls",
+     "verb": "Paddling to Ragged Falls",
+     "routeKind": "paddle",
+     "facts": [
+      [
+       "Time",
+       "3–4 h return"
+      ],
+      [
+       "Cost",
+       "From about $54 per two-person canoe"
+      ],
+      [
+       "Water",
+       "Small lake, then a gentle river"
+      ],
+      [
+       "Season",
+       "Runs through Oct 12"
+      ]
+     ],
+     "body": "Cross Oxtongue Lake and paddle up the Oxtongue River to the base of Ragged Falls. Pull the canoe up, eat your picnic, and walk the trail beside the falls for the view from the top, then drift back down.",
+     "tips": [
+      "Mornings are usually calmer on the lake, which is why the paddle comes first.",
+      "Life jackets zipped up the whole time. The water is cold in October.",
+      "Pack lunch in the dry bag and eat at the falls.",
+      "Stay near shore if it's windy on the lake.",
+      "Turn around by about 11:30 so the way back isn't rushed."
+     ],
+     "geom": "wp~sGf`v`NtWoyASwAm@gCyA_DoC{DqAkA}Bc@wC_BmCeCgBaBcBV]^eDpCiAZQFi@l@g@lCS`Am@pCIbALdBRbCDhAq@hCmFtAcBG{By@cF]{BNe@VaA`@mA?mAk@W[Si@\\sBh@{@LsCEy@IeAm@iCU]wA_Be@KUGIMUg@KQM]IWGWAWI_@GMKM]IY??D?EX?\\HJLFLH^@VFVHVL\\JPTf@HLTFd@JvA~AT\\l@hCHdADx@MrCi@z@]rBRh@VZlAj@lA?`Aa@d@WzBObF\\zBx@bBFlFuAp@iCEiAScCMeBHcAl@qCRaAf@mCh@m@PGhA[dDqC\\_@bBWfB`BlCdCvC~A|Bb@pAjAnCzDxA~Cl@fCRvAuWnyA"
+    },
+    {
+     "t": "stop",
+     "place": "aostore",
+     "start": "13:05",
+     "end": "13:45",
+     "kind": "food",
+     "name": "Lunch + dry clothes",
+     "verb": "Lunch at Oxtongue Lake",
+     "body": "Change into dry clothes at the car and eat the picnic by the water before heading into the park.",
+     "tips": []
+    },
+    {
+     "t": "drive",
+     "path": [
+      "aostore",
+      "oxt",
+      "rfturn",
+      "wg",
+      "k7",
+      "k14",
+      "k20",
+      "k27",
+      "k31",
+      "k33",
+      "k37",
+      "lookout"
+     ],
+     "start": "13:45",
+     "end": "14:35",
+     "label": "Oxtongue Lake → Lookout Trail",
+     "note": "In through Algonquin's West Gate at km 0. Your permit is tied to your plate, so drive straight through. Lookout Trail is at km 39.7."
+    },
+    {
+     "t": "stop",
+     "place": "lookout",
+     "start": "14:35",
+     "end": "15:40",
+     "kind": "hike",
+     "km": "39.7",
+     "name": "Lookout Trail",
+     "verb": "Hiking Algonquin's Lookout Trail",
+     "facts": [
+      [
+       "Length",
+       "1.9 km loop"
+      ],
+      [
+       "Difficulty",
+       "Moderate, one steep climb"
+      ],
+      [
+       "Time",
+       "About 1 h"
+      ]
+     ],
+     "body": "A short, steep climb to an open rock ledge with the classic Algonquin view: rolling hills of colour and lakes in every direction. Not to be confused with Hardwood Lookout (km 13.8), which is closed Oct 9–12.",
+     "tips": [
+      "Midday is the busiest time for Hwy 60 trailhead lots. If the lot is full, park at Big Pines (km 40.3) and take the 450 m connector. Don't park on the highway."
+     ]
+    },
+    {
+     "t": "drive",
+     "path": [
+      "lookout",
+      "sprucebog"
+     ],
+     "start": "15:40",
+     "end": "15:45",
+     "label": "Lookout Trail → Spruce Bog"
+    },
+    {
+     "t": "stop",
+     "place": "sprucebog",
+     "start": "15:45",
+     "end": "16:35",
+     "kind": "hike",
+     "km": "42.5",
+     "name": "Spruce Bog Boardwalk",
+     "verb": "Walking the Spruce Bog Boardwalk",
+     "facts": [
+      [
+       "Length",
+       "1.5 km loop"
+      ],
+      [
+       "Difficulty",
+       "Easy, mostly boardwalk"
+      ],
+      [
+       "Time",
+       "About 50 min"
+      ]
+     ],
+     "body": "A flat loop over boardwalks through two black spruce bogs. Tamaracks turn gold here in October, a different kind of fall colour from the maples.",
+     "tips": [
+      "Good for tired legs after the paddle and the climb."
+     ]
+    },
+    {
+     "t": "drive",
+     "path": [
+      "sprucebog",
+      "vc"
+     ],
+     "start": "16:35",
+     "end": "16:40",
+     "label": "Spruce Bog → Visitor Centre"
+    },
+    {
+     "t": "stop",
+     "place": "vc",
+     "start": "16:40",
+     "end": "17:00",
+     "kind": "visit",
+     "km": "43",
+     "name": "Algonquin Visitor Centre",
+     "verb": "At the Algonquin Visitor Centre",
+     "facts": [
+      [
+       "Open",
+       "9 AM – 5 PM on weekends"
+      ],
+      [
+       "Has",
+       "Viewing deck, exhibits, coffee, washrooms"
+      ]
+     ],
+     "body": "The back deck looks out over a huge sweep of forest and marsh. Last washroom and coffee before the drive home.",
+     "tips": [
+      "Closes at 5, so don't linger at the boardwalk."
+     ]
+    },
+    {
+     "t": "drive",
+     "path": [
+      "vc",
+      "lookout",
+      "wg",
+      "dwight",
+      "hunts",
+      "bracebridge",
+      "bbfalls"
+     ],
+     "start": "17:00",
+     "end": "18:25",
+     "label": "Visitor Centre → Bracebridge",
+     "note": "Back out the West Gate and down Hwy 11. Sunset is about 6:36, so watch for moose on Hwy 60."
+    },
+    {
+     "t": "stop",
+     "place": "bbfalls",
+     "start": "18:25",
+     "end": "19:30",
+     "kind": "food",
+     "name": "Dinner in Bracebridge",
+     "verb": "Dinner in Bracebridge",
+     "body": "Downtown Bracebridge is right off Hwy 11, about halfway home, with Bracebridge Falls a short walk from Manitoba Street. Breaks up the long drive.",
+     "tips": [
+      "Ask the trip assistant for a place to eat; it's a holiday Sunday, so a reservation helps."
+     ]
+    },
+    {
+     "t": "drive",
+     "path": [
+      "bbfalls",
+      "gravenhurst",
+      "orillia",
+      "barrie",
+      "finch"
+     ],
+     "start": "19:30",
+     "end": "21:15",
+     "label": "Bracebridge → Finch",
+     "note": "Hwy 11 and the 400 south. Holiday traffic can add 30–60 minutes."
+    },
+    {
+     "t": "stop",
+     "place": "finch",
+     "start": "21:15",
+     "end": "21:20",
+     "kind": "meet",
+     "name": "Drop off at Finch",
+     "verb": "Dropping your friend at Finch",
+     "body": "Your friend takes Line 1 back downtown.",
+     "tips": []
+    },
+    {
+     "t": "drive",
+     "path": [
+      "finch",
+      "markham"
+     ],
+     "start": "21:20",
+     "end": "21:45",
+     "label": "Finch → Markham"
+    },
+    {
+     "t": "stop",
+     "place": "markham",
+     "start": "21:45",
+     "end": "21:45",
+     "kind": "stay",
+     "name": "Home",
+     "verb": "Home in Markham",
+     "body": "Home around 9:45 PM, or later if the 400 is slow.",
+     "tips": []
+    }
+   ]
+  }
+ },
+ "dayRoutes": {
+  "sat": [
+   "finch",
+   "highfalls",
+   "hunts",
+   "bigbend",
+   "stubbs",
+   "beach",
+   "hunts",
+   "lions"
+  ],
+  "sun": [
+   "hunts",
+   "aostore",
+   "lookout",
+   "sprucebog",
+   "vc",
+   "bbfalls",
+   "finch"
+  ]
+ },
+ "kinds": {
+  "paddle": "Paddle",
+  "hike": "Hike",
+  "visit": "Visit",
+  "food": "Food",
+  "drive": "Drive",
+  "stay": "Huntsville",
+  "meet": "Stop",
+  "start": "Start"
+ },
+ "weather": {
+  "sat": {
+   "lat": 45.36,
+   "lon": -79.21,
+   "label": "Huntsville & Arrowhead"
+  },
+  "sun": {
+   "lat": 45.45,
+   "lon": -78.7,
+   "label": "Oxtongue Lake & Algonquin"
+  }
+ }
+}
