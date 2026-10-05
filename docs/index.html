@@ -69,23 +69,33 @@
 
 <section class="cli" id="chat" data-open="false" aria-label="Trip assistant">
   <div class="cli-box">
+    <header class="cli-head">
+      <div class="cli-title"><b>Trip assistant</b><span class="cli-status" id="chatSub">Connecting…</span></div>
+      <button type="button" class="cli-btn" id="chatNew" title="Clear this conversation and start over">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg><span>New chat</span>
+      </button>
+      <button type="button" class="cli-btn icon" id="chatHide" aria-label="Hide chat" title="Hide (Esc). Answers keep coming while hidden.">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>
+      </button>
+    </header>
     <div class="cli-log" id="chatLog" aria-live="polite"></div>
     <form class="cli-join" id="chatJoin" hidden>
       <span>Enter the access code:</span>
-      <input id="joinCode" type="password" autocomplete="off" aria-label="Access code" placeholder="access code">
-      <button type="submit">enter</button>
+      <input id="joinCode" type="password" autocomplete="off" aria-label="Access code" placeholder="Access code">
+      <button type="submit">Enter</button>
       <span class="cli-err" id="joinErr" role="alert"></span>
     </form>
     <form class="cli-input" id="chatForm">
-      <span class="cli-prompt" aria-hidden="true">›</span>
-      <textarea id="chatText" rows="1" placeholder="Ask about the trip" aria-label="Ask the trip assistant" maxlength="2000" spellcheck="false"></textarea>
+      <svg class="cli-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h7A2.5 2.5 0 0 1 16 5.5v5a2.5 2.5 0 0 1-2.5 2.5H9l-4 3.5V13a2.5 2.5 0 0 1-1-2z"/></svg>
+      <textarea id="chatText" rows="1" placeholder="Ask about the trip…" aria-label="Ask the trip assistant" maxlength="2000"></textarea>
+      <button type="button" class="cli-badge" id="chatBadge" hidden></button>
       <kbd class="cli-kbd" id="chatKbd">⌘K</kbd>
-      <button type="submit" class="cli-send" id="chatSend" aria-label="Send">↵</button>
+      <button type="submit" class="cli-send" id="chatSend" aria-label="Send" title="Send">
+        <svg class="i-send" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 16V4M5 9l5-5 5 5"/></svg>
+        <svg class="i-stop" viewBox="0 0 20 20" aria-hidden="true"><rect x="6" y="6" width="8" height="8" rx="1.5"/></svg>
+      </button>
     </form>
-    <div class="cli-foot">
-      <span class="cli-status" id="chatSub">connecting…</span>
-      <span class="cli-keys">enter to send · esc to hide · /clear</span>
-    </div>
+    <div class="cli-foot">Enter to send · Shift+Enter for a new line · Esc to hide</div>
   </div>
 </section>
 
