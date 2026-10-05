@@ -289,8 +289,10 @@ li.now>.row .t{color:var(--maple);font-weight:600}
 @media (prefers-reduced-motion:reduce){.you::before{animation:none;opacity:.5}}
 
 /* ---------- chat: an assistant bar docked under the plan that opens into a panel ---------- */
-.cli{position:fixed;z-index:20;left:calc(var(--gap) + clamp(8px,3vw,40px));right:calc(var(--map-w) + var(--gap)*2 + clamp(8px,3vw,40px));bottom:16px}
-.cli-box{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 30px -8px rgba(16,32,24,.25);overflow:hidden}
+/* the bar spans the same centred 1600px frame as .app and pads in to the plan column, so on
+   wide screens it stays under the plan instead of sliding under the map */
+.cli{position:fixed;z-index:20;left:0;right:0;bottom:16px;max-width:1600px;margin:0 auto;padding:0 calc(var(--map-w) + var(--gap)*2 + clamp(8px,3vw,40px)) 0 calc(var(--gap) + clamp(8px,3vw,40px));pointer-events:none}
+.cli-box{pointer-events:auto;background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 30px -8px rgba(16,32,24,.25);overflow:hidden}
 .cli[data-open="true"] .cli-box{box-shadow:var(--shadow)}
 .cli-head,.cli-log,.cli-foot{display:none}
 .cli[data-open="true"] .cli-head,.cli[data-open="true"] .cli-log{display:flex}
@@ -377,7 +379,7 @@ li.now>.row .t{color:var(--maple);font-weight:600}
   .stats{grid-template-columns:repeat(2,1fr)}
   .stat:nth-child(3){border-left:0}
   .stat:nth-child(n+3){border-top:1px solid var(--line)}
-  .cli{left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom))}
+  .cli{padding:0 12px;bottom:calc(12px + env(safe-area-inset-bottom))}
   .cli-foot,.cli-kbd{display:none!important}
 }
 @media (max-width:560px){
