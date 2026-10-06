@@ -142,15 +142,16 @@
    "hot": true,
    "opens": "2026-10-06T07:00",
    "when": "Tue Oct 6 · 7:00 AM ET",
-   "what": "Algonquin Hwy 60 permit",
+   "what": "Algonquin permit (Booth's Rock + Hwy 60)",
    "for": "Sun Oct 11",
    "cost": "$21.00 per car (HST included)",
-   "summary": "Needed for the Lookout Trail first thing Sunday morning. Driving through on Hwy 60 without stopping doesn't need one, and the Oxtongue Lake paddle is outside the park.",
+   "summary": "Needed for the Algonquin trails on Sunday afternoon. Get the Booth's Rock + Hwy 60 row: same price, covers everything the plain Hwy 60 permit does, and keeps Booth's Rock open as an option. Driving through on Hwy 60 without stopping doesn't need one, and the Oxtongue Lake paddle is outside the park.",
    "steps": [
     "At 7:00 AM, same site. Tab: **Day Use**, **Daily Vehicle Permit (DVP)**.",
     "Park: type `Hwy 60` and pick **Algonquin - Hwy 60 Corridor**.",
     "Arrival: **Sun, Oct 11**, then **Search**.",
-    "In the grid, click the **DVP - Hwy 60 (Does not include Booth's Rock Trail)** row under **Sun, Oct 11**. Same price as the Booth's Rock row; pick that one only if you want to hike Booth's Rock.",
+    "In the grid, click the **DVP - Booth's Rock Trail + Hwy 60** row under **Sun, Oct 11**.",
+    "If that row is sold out, click **DVP - Hwy 60 (Does not include Booth's Rock Trail)** instead. Same price, and it still covers Lookout Trail and Spruce Bog.",
     "Accept the acknowledgements, Checkout, licence plate, pay, and keep the email."
    ],
    "facts": [
@@ -199,7 +200,7 @@
      "Only within 2 h"
     ]
    ],
-   "tip": "Only needed for the Lookout Trail stop. The paddle at Oxtongue Lake is outside the park. Want Booth's Rock Trail too? Pick “Booth's Rock Trail + Hwy 60” instead (same price).",
+   "tip": "Pick “Booth's Rock Trail + Hwy 60” (same price). If it's sold out, take the plain Hwy 60 row. The paddle at Oxtongue Lake is outside the park.",
    "site": {
     "url": "reservations.ontarioparks.ca",
     "steps": [
@@ -237,7 +238,7 @@
         "DVP - Hwy 60 (Does not include Booth's Rock Trail)",
         "DVP - Booth's Rock Trail + Hwy 60"
        ],
-       "pickRow": 0
+       "pickRow": 1
       }
      }
     ]
